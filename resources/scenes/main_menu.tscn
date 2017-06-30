@@ -1,0 +1,11 @@
+[gd_scene format=2]
+
+[node name="main_menu" type="Panel"]
+
+margin_right = 1280.0
+margin_bottom = 720.0
+rect_clip_content = false
+mouse_filter = 0
+_sections_unfolded = [ "Rect" ]
+
+
