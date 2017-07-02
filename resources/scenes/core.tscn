@@ -5,6 +5,7 @@
 [node name="core" type="Node"]
 
 script = ExtResource( 1 )
+start_state = 1
 
 [node name="audio" type="AudioStreamPlayer" parent="."]
 

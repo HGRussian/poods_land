@@ -11,8 +11,8 @@ export(int, "LOGO_PREVIEW", "MAIN_MENU", "IN_GAME", "IN_GAME_PAUSE") var start_s
 var current_state = -1
 
 func _ready():
-	new_state(start_state)
-
+	#new_state(start_state)
+	pass
 
 func new_state(state):
 	if state == LOGO_PREVIEW:
