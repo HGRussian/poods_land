@@ -8,6 +8,7 @@ onready var det_right = $detectors/right
 
 # dec some stats (need to move on)
 var SPEED = 400
+var SPRINT_SPEED = 900
 var JUMP = 500
 var WALL_JUMP_FACTOR = 10
 var ACC_FACTOR = 15
@@ -22,11 +23,13 @@ var wallslide_time = 0
 var rot_target = 0
 var rot = 0
 var scl = 1
+var bounce_def = 0
 
 # input shit
 var move_left = false
 var move_right = false
 var move_jump = false
+var move_sprint = false
 	
 func _fixed_process(delta):
 	var lin_vec = Vector2()
@@ -34,6 +37,7 @@ func _fixed_process(delta):
 	move_right = Input.is_action_pressed("move_right")
 	move_left = Input.is_action_pressed("move_left")
 	move_jump = Input.is_action_just_pressed("move_jump")
+	move_sprint = Input.is_action_pressed("move_sprint")
 	
 	#process mirroring
 	if move_left: 
@@ -43,25 +47,36 @@ func _fixed_process(delta):
 		$tex.flip_h=false
 		scl=1
 	
+	if wallslide_time > 0:
+		bounce = 0
+	else:
+		if onair_time > 0.2:
+			bounce = bounce_def
+	
 	# processing floor 
 	if det_down.is_colliding():
-		if onair_time > 0.1:
+		if test_motion(Vector2(0,1)):
 			cjumps = 0
-		onair_time = 0
+			onair_time = 0
 		var normal = det_down.get_collision_normal()
-		if abs(rotation) < 0.5:
+		if abs(rot_target) < 0.7 or move_sprint:
 			rot_target = normal.angle() + deg2rad(90)
+		else:
+			rot_target = 0
 	else:
 		onair_time+=delta
 		if linear_velocity.y > 0:
-			rot_target=deg2rad(10)*scl
+			rot_target=deg2rad(5)*scl
 		elif linear_velocity.y < 0:
-			rot_target=-deg2rad(10)*scl
+			rot_target=-deg2rad(5)*scl
 	
 	# processing walls
-	if det_left.is_colliding():
+	if det_left.is_colliding() and !move_sprint:
 	# left wall
 		wallslide_time+=delta
+		var normal = det_left.get_collision_normal()
+		if abs(rot_target) < 0.2:
+			rot_target = normal.angle()
 		if move_jump: 
 			linear_damp = -1
 			lin_vec.x+=SPEED*WALL_JUMP_FACTOR
@@ -75,9 +90,12 @@ func _fixed_process(delta):
 			linear_damp = -1
 		cjumps = 0
 		onair_time = 0
-	elif det_right.is_colliding():
+	elif det_right.is_colliding() and !move_sprint:
 	# right wall
 		wallslide_time+=delta
+		var normal = det_right.get_collision_normal()
+		if abs(rot_target) < 0.2:
+			rot_target = normal.angle() + deg2rad(180)
 		if move_jump: 
 			linear_damp = -1
 			lin_vec.x-=SPEED*WALL_JUMP_FACTOR
@@ -95,11 +113,23 @@ func _fixed_process(delta):
 	# on_floor controll 
 		wallslide_time = 0
 		linear_damp = -1
-		if move_left: lin_vec.x-=SPEED
-		if move_right: lin_vec.x+=SPEED
+		if move_sprint:
+			friction = 0.1
+			det_down.cast_to = Vector2(0,50)
+			if !det_left.is_colliding() and !det_right.is_colliding():
+				if move_left: lin_vec.x-=SPRINT_SPEED
+				if move_right: lin_vec.x+=SPRINT_SPEED
+		else:
+			friction = 1
+			det_down.cast_to = Vector2(0,12)
+			if move_left: lin_vec.x-=SPEED
+			if move_right: lin_vec.x+=SPEED
 		if move_jump:
 			if cjumps < JUMPS:
-				linear_velocity.y=-JUMP
+				if move_sprint:
+					linear_velocity=Vector2(0,-JUMP*2).rotated(rot_target)
+				else:
+					linear_velocity=Vector2(0,-JUMP).rotated(rot_target)
 				cjumps+=1
 		# target normal
 
@@ -110,4 +140,5 @@ func _fixed_process(delta):
 	rotation = rot
 
 func _ready():
+	bounce_def = bounce
 	set_fixed_process(true)
