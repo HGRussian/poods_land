@@ -24,6 +24,7 @@ var rot_target = 0
 var rot = 0
 var scl = 1
 var bounce_def = 0
+var canim = "idle"
 
 # input shit
 var move_left = false
@@ -43,9 +44,18 @@ func _fixed_process(delta):
 	if move_left: 
 		$tex.flip_h=true
 		scl=-1
-	if move_right: 
+		if wallslide_time > 0:
+			$tex.flip_h=false
+	elif move_right: 
 		$tex.flip_h=false
 		scl=1
+		if wallslide_time > 0:
+			$tex.flip_h=true
+	elif abs(linear_velocity.x) > 0.5:
+		if linear_velocity.x > 0:
+			$tex.flip_h=false
+		elif linear_velocity.x < 0:
+			$tex.flip_h=true
 	
 	if wallslide_time > 0:
 		bounce = 0
@@ -58,6 +68,19 @@ func _fixed_process(delta):
 		if test_motion(Vector2(0,1)):
 			cjumps = 0
 			onair_time = 0
+		
+		#anim
+		if abs(linear_velocity.x) > 0.1:
+			if move_left or move_right:
+				if move_sprint:
+					set_anim("sprint")
+				else:
+					set_anim("walk")
+			else:
+				set_anim("brake")
+		else:
+			set_anim("idle")
+		
 		var normal = det_down.get_collision_normal()
 		if abs(rot_target) < 0.7 or move_sprint:
 			rot_target = normal.angle() + deg2rad(90)
@@ -67,8 +90,13 @@ func _fixed_process(delta):
 		onair_time+=delta
 		if linear_velocity.y > 0:
 			rot_target=deg2rad(5)*scl
+			if wallslide_time > 0:
+				set_anim("stick")
+			else:
+				set_anim("fall")
 		elif linear_velocity.y < 0:
 			rot_target=-deg2rad(5)*scl
+			set_anim("jump")
 	
 	# processing walls
 	if det_left.is_colliding() and !move_sprint:
@@ -93,6 +121,7 @@ func _fixed_process(delta):
 	elif det_right.is_colliding() and !move_sprint:
 	# right wall
 		wallslide_time+=delta
+		
 		var normal = det_right.get_collision_normal()
 		if abs(rot_target) < 0.2:
 			rot_target = normal.angle() + deg2rad(180)
@@ -138,6 +167,11 @@ func _fixed_process(delta):
 	# rotate poods
 	rot = lerp(rot,rot_target,delta*10)
 	rotation = rot
+
+func set_anim(anim):
+	if canim != anim:
+		$anim.play(anim)
+		canim = anim
 
 func _ready():
 	bounce_def = bounce
