@@ -155,7 +155,7 @@ func _fixed_process(delta):
 			if move_right: lin_vec.x+=SPEED
 		if move_jump:
 			if cjumps < JUMPS:
-				if move_sprint:
+				if move_sprint and det_down.is_colliding():
 					linear_velocity=Vector2(0,-JUMP*2).rotated(rot_target)
 				else:
 					linear_velocity=Vector2(0,-JUMP).rotated(rot_target)
@@ -165,7 +165,7 @@ func _fixed_process(delta):
 	# put cooked x lin_vec!
 	linear_velocity.x=lerp(linear_velocity.x,lin_vec.x,delta*ACC_FACTOR)
 	# rotate poods
-	rot = lerp(rot,rot_target,delta*10)
+	rot = lerp(rot,rot_target,delta*25)
 	rotation = rot
 
 func set_anim(anim):
