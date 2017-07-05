@@ -7,8 +7,8 @@ onready var det_left = $detectors/left
 onready var det_right = $detectors/right
 
 # dec some stats (need to move on)
-var SPEED = 400
-var SPRINT_SPEED = 900
+var SPEED = 600
+var SPRINT_SPEED = 1200
 var JUMP = 500
 var WALL_JUMP_FACTOR = 10
 var ACC_FACTOR = 15
@@ -44,12 +44,12 @@ func _fixed_process(delta):
 	if move_left: 
 		$tex.flip_h=true
 		scl=-1
-		if wallslide_time > 0:
+		if wallslide_time > 0 and !det_down.is_colliding():
 			$tex.flip_h=false
 	elif move_right: 
 		$tex.flip_h=false
 		scl=1
-		if wallslide_time > 0:
+		if wallslide_time > 0 and !det_down.is_colliding():
 			$tex.flip_h=true
 	elif abs(linear_velocity.x) > 0.5:
 		if linear_velocity.x > 0:
@@ -70,7 +70,7 @@ func _fixed_process(delta):
 			onair_time = 0
 		
 		#anim
-		if abs(linear_velocity.x) > 0.1:
+		if abs(linear_velocity.x) > 25:
 			if move_left or move_right:
 				if move_sprint:
 					set_anim("sprint")
@@ -99,7 +99,7 @@ func _fixed_process(delta):
 			set_anim("jump")
 	
 	# processing walls
-	if det_left.is_colliding() and !move_sprint:
+	if det_left.is_colliding():
 	# left wall
 		wallslide_time+=delta
 		var normal = det_left.get_collision_normal()
@@ -109,7 +109,7 @@ func _fixed_process(delta):
 			linear_damp = -1
 			lin_vec.x+=SPEED*WALL_JUMP_FACTOR
 			linear_velocity.y=-JUMP
-		if move_right and wallslide_time > STICKINESS: lin_vec.x+=SPEED
+		if move_right and wallslide_time > STICKINESS and !det_down.is_colliding() and !move_jump: lin_vec.x+=SPEED
 		if move_left: 
 			linear_damp = SLIDE_FACTOR
 			if move_jump:
@@ -118,18 +118,20 @@ func _fixed_process(delta):
 			linear_damp = -1
 		cjumps = 0
 		onair_time = 0
-	elif det_right.is_colliding() and !move_sprint:
+	elif det_right.is_colliding():
 	# right wall
 		wallslide_time+=delta
-		
 		var normal = det_right.get_collision_normal()
 		if abs(rot_target) < 0.2:
-			rot_target = normal.angle() + deg2rad(180)
+			# пожалуйста убейте меня за эту строчку
+			# но я понятия не имею как сделать иначе
+			# please help
+			rot_target = normal.angle() - abs(normal.angle())/normal.angle() * deg2rad(180)
 		if move_jump: 
 			linear_damp = -1
 			lin_vec.x-=SPEED*WALL_JUMP_FACTOR
 			linear_velocity.y=-JUMP
-		if move_left and wallslide_time > STICKINESS: lin_vec.x-=SPEED
+		if move_left and wallslide_time > STICKINESS and !det_down.is_colliding() and !move_jump: lin_vec.x-=SPEED
 		if move_right:
 			linear_damp = SLIDE_FACTOR
 			if move_jump:
@@ -142,12 +144,14 @@ func _fixed_process(delta):
 	# on_floor controll 
 		wallslide_time = 0
 		linear_damp = -1
-		if move_sprint:
-			friction = 0.1
+		if move_sprint and det_down.is_colliding():
+			if abs(linear_velocity.x) > 25:
+				friction = 0.3
+			else:
+				friction = 1
 			det_down.cast_to = Vector2(0,50)
-			if !det_left.is_colliding() and !det_right.is_colliding():
-				if move_left: lin_vec.x-=SPRINT_SPEED
-				if move_right: lin_vec.x+=SPRINT_SPEED
+			if move_left: lin_vec.x-=SPRINT_SPEED
+			if move_right: lin_vec.x+=SPRINT_SPEED
 		else:
 			friction = 1
 			det_down.cast_to = Vector2(0,12)
@@ -155,10 +159,7 @@ func _fixed_process(delta):
 			if move_right: lin_vec.x+=SPEED
 		if move_jump:
 			if cjumps < JUMPS:
-				if move_sprint and det_down.is_colliding():
-					linear_velocity=Vector2(0,-JUMP*2).rotated(rot_target)
-				else:
-					linear_velocity=Vector2(0,-JUMP).rotated(rot_target)
+				linear_velocity=Vector2(0,-JUMP).rotated(rot_target)
 				cjumps+=1
 		# target normal
 
@@ -167,7 +168,7 @@ func _fixed_process(delta):
 	# rotate poods
 	rot = lerp(rot,rot_target,delta*25)
 	rotation = rot
-
+	
 func set_anim(anim):
 	if canim != anim:
 		$anim.play(anim)
