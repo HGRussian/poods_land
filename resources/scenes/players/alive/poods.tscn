@@ -7,7 +7,7 @@
 
 custom_solver_bias = 0.0
 radius = 8.0
-height = 5.0
+height = 3.0
 
 [sub_resource type="Animation" id=2]
 
@@ -141,7 +141,7 @@ collision_mask = 1
 mode = 2
 mass = 1.0
 friction = 1.0
-bounce = 0.1
+bounce = 0.0
 gravity_scale = 10.0
 custom_integrator = false
 continuous_cd = 0
@@ -178,7 +178,7 @@ type_mask = 5
 
 enabled = true
 exclude_parent = true
-cast_to = Vector2( 0, 12 )
+cast_to = Vector2( 0, 15 )
 collision_layer = 1
 type_mask = 5
 
@@ -186,7 +186,7 @@ type_mask = 5
 
 enabled = true
 exclude_parent = true
-cast_to = Vector2( -12, 0 )
+cast_to = Vector2( -10, 0 )
 collision_layer = 1
 type_mask = 1
 
@@ -194,13 +194,12 @@ type_mask = 1
 
 enabled = true
 exclude_parent = true
-cast_to = Vector2( 12, 0 )
+cast_to = Vector2( 10, 0 )
 collision_layer = 1
 type_mask = 1
 
 [node name="col" type="CollisionShape2D" parent="."]
 
-visible = false
 shape = SubResource( 9 )
 _sections_unfolded = [ "Transform" ]
 

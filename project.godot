@@ -1,6 +1,4 @@
 config_version=3
-config_version=null
-
 [application]
 
 name="poods_land"
@@ -18,6 +16,10 @@ window/height=720
 window/use_vsync=false
 stretch/mode="2d"
 stretch/aspect="keep_height"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "vnen.tiled_importer" )
 
 [input]
 

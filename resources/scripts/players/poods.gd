@@ -7,9 +7,10 @@ onready var det_left = $detectors/left
 onready var det_right = $detectors/right
 
 # dec some stats (need to move on)
-var SPEED = 600
-var SPRINT_SPEED = 1200
-var JUMP = 500
+var SPEED = 400
+var SPRINT_SPEED = 600
+var JUMP = 400
+var SPRINT_JUMP = 600
 var WALL_JUMP_FACTOR = 10
 var ACC_FACTOR = 15
 var SLIDE_FACTOR = 10
@@ -23,8 +24,8 @@ var wallslide_time = 0
 var rot_target = 0
 var rot = 0
 var scl = 1
-var bounce_def = 0
 var canim = "idle"
+var jump_speed
 
 # input shit
 var move_left = false
@@ -39,7 +40,7 @@ func _fixed_process(delta):
 	move_left = Input.is_action_pressed("move_left")
 	move_jump = Input.is_action_just_pressed("move_jump")
 	move_sprint = Input.is_action_pressed("move_sprint")
-	
+
 	#process mirroring
 	if move_left: 
 		$tex.flip_h=true
@@ -51,18 +52,12 @@ func _fixed_process(delta):
 		scl=1
 		if wallslide_time > 0 and !det_down.is_colliding():
 			$tex.flip_h=true
-	elif abs(linear_velocity.x) > 0.5:
+	elif abs(linear_velocity.x) > 25:
 		if linear_velocity.x > 0:
 			$tex.flip_h=false
 		elif linear_velocity.x < 0:
 			$tex.flip_h=true
-	
-	if wallslide_time > 0:
-		bounce = 0
-	else:
-		if onair_time > 0.2:
-			bounce = bounce_def
-	
+
 	# processing floor 
 	if det_down.is_colliding():
 		if test_motion(Vector2(0,1)):
@@ -82,7 +77,7 @@ func _fixed_process(delta):
 			set_anim("idle")
 		
 		var normal = det_down.get_collision_normal()
-		if abs(rot_target) < 0.7 or move_sprint:
+		if abs(rot) < 0.8 or move_sprint:
 			rot_target = normal.angle() + deg2rad(90)
 		else:
 			rot_target = 0
@@ -103,26 +98,26 @@ func _fixed_process(delta):
 	# left wall
 		wallslide_time+=delta
 		var normal = det_left.get_collision_normal()
-		if abs(rot_target) < 0.2:
+		if abs(rot) < 0.1:
 			rot_target = normal.angle()
 		if move_jump: 
 			linear_damp = -1
 			lin_vec.x+=SPEED*WALL_JUMP_FACTOR
-			linear_velocity.y=-JUMP
+			linear_velocity.y=-jump_speed
 		if move_right and wallslide_time > STICKINESS and !det_down.is_colliding() and !move_jump: lin_vec.x+=SPEED
 		if move_left: 
 			linear_damp = SLIDE_FACTOR
 			if move_jump:
-				linear_velocity.y-=JUMP/2
+				linear_velocity.y-=jump_speed/2
 		else:
 			linear_damp = -1
-		cjumps = 0
+		cjumps = 1
 		onair_time = 0
 	elif det_right.is_colliding():
 	# right wall
 		wallslide_time+=delta
 		var normal = det_right.get_collision_normal()
-		if abs(rot_target) < 0.2:
+		if abs(rot) < 0.1:
 			# пожалуйста убейте меня за эту строчку
 			# но я понятия не имею как сделать иначе
 			# please help
@@ -130,36 +125,39 @@ func _fixed_process(delta):
 		if move_jump: 
 			linear_damp = -1
 			lin_vec.x-=SPEED*WALL_JUMP_FACTOR
-			linear_velocity.y=-JUMP
+			linear_velocity.y=-jump_speed
 		if move_left and wallslide_time > STICKINESS and !det_down.is_colliding() and !move_jump: lin_vec.x-=SPEED
 		if move_right:
 			linear_damp = SLIDE_FACTOR
 			if move_jump:
-					linear_velocity.y-=JUMP/2
+					linear_velocity.y-=jump_speed/2
 		else:
 			linear_damp = -1
-		cjumps = 0
+		cjumps = 1
 		onair_time = 0
 	else:
 	# on_floor controll 
 		wallslide_time = 0
 		linear_damp = -1
-		if move_sprint and det_down.is_colliding():
+		if move_sprint and !wallslide_time > 0:
+			jump_speed = SPRINT_JUMP
 			if abs(linear_velocity.x) > 25:
-				friction = 0.3
+				friction = 0.1
 			else:
 				friction = 1
-			det_down.cast_to = Vector2(0,50)
 			if move_left: lin_vec.x-=SPRINT_SPEED
 			if move_right: lin_vec.x+=SPRINT_SPEED
 		else:
-			friction = 1
-			det_down.cast_to = Vector2(0,12)
+			jump_speed = JUMP
+			if onair_time > 0:
+				friction = 0
+			else:
+				friction = 1
 			if move_left: lin_vec.x-=SPEED
 			if move_right: lin_vec.x+=SPEED
 		if move_jump:
 			if cjumps < JUMPS:
-				linear_velocity=Vector2(0,-JUMP).rotated(rot_target)
+				linear_velocity=Vector2(0,-jump_speed).rotated(rot_target)
 				cjumps+=1
 		# target normal
 
@@ -168,12 +166,11 @@ func _fixed_process(delta):
 	# rotate poods
 	rot = lerp(rot,rot_target,delta*25)
 	rotation = rot
-	
+
 func set_anim(anim):
 	if canim != anim:
 		$anim.play(anim)
 		canim = anim
 
 func _ready():
-	bounce_def = bounce
 	set_fixed_process(true)

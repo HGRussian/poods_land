@@ -1,16 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://resources/scenes/players/alive/poods.tscn" type="PackedScene" id=1]
-
-[sub_resource type="RectangleShape2D" id=1]
-
-custom_solver_bias = 0.0
-extents = Vector2( 151, 48 )
-
-[sub_resource type="RectangleShape2D" id=2]
-
-custom_solver_bias = 0.0
-extents = Vector2( 10, 10 )
+[ext_resource path="res://resources/tilemaps/green_heaven.tres" type="TileSet" id=2]
 
 [node name="Node2D" type="Node2D"]
 
@@ -23,7 +14,7 @@ angular_damp = -1.0
 anchor_mode = 1
 rotating = false
 current = true
-zoom = Vector2( 1, 1 )
+zoom = Vector2( 0.5, 0.5 )
 limit_left = -10000000
 limit_top = -10000000
 limit_right = 10000000
@@ -42,270 +33,22 @@ editor_draw_limits = false
 editor_draw_drag_margin = false
 _sections_unfolded = [ "Smoothing" ]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="TileMap" type="TileMap" parent="."]
 
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-
-position = Vector2( 288, 27 )
-rotation = -0.324645
-shape = SubResource( 1 )
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
-
-position = Vector2( 559, -98 )
-rotation = -0.546703
-shape = SubResource( 1 )
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
-
-position = Vector2( 752, -315 )
-rotation = -1.15051
-shape = SubResource( 1 )
-
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
-
-position = Vector2( 815, -604 )
-rotation = -1.56122
-shape = SubResource( 1 )
-
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D"]
-
-position = Vector2( -215, -17 )
-rotation = -4.79251
-shape = SubResource( 1 )
-
-[node name="CollisionShape2D7" type="CollisionShape2D" parent="StaticBody2D"]
-
-position = Vector2( -196, -301 )
-rotation = -4.49958
-shape = SubResource( 1 )
-
-[node name="CollisionShape2D8" type="CollisionShape2D" parent="StaticBody2D"]
-
-position = Vector2( -1059, -480 )
-rotation = -6.29562
-shape = SubResource( 1 )
-
-[node name="CollisionShape2D9" type="CollisionShape2D" parent="StaticBody2D"]
-
-position = Vector2( -9, 77 )
-rotation = -6.29562
-shape = SubResource( 1 )
-
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
-
-position = Vector2( 128, -151 )
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
 mode = 0
-mass = 0.5
-friction = 1.0
-bounce = 0.0
-gravity_scale = 10.0
-custom_integrator = false
-continuous_cd = 0
-contacts_reported = 0
-contact_monitor = false
-sleeping = false
-can_sleep = true
-linear_velocity = Vector2( 0, 0 )
-linear_damp = -1.0
-angular_velocity = 0.0
-angular_damp = -1.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-
-shape = SubResource( 2 )
-
-[node name="RigidBody2D2" type="RigidBody2D" parent="."]
-
-position = Vector2( 142, -187 )
-input_pickable = false
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 64, 64 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
 collision_layer = 1
 collision_mask = 1
-mode = 0
-mass = 0.5
-friction = 1.0
-bounce = 0.0
-gravity_scale = 10.0
-custom_integrator = false
-continuous_cd = 0
-contacts_reported = 0
-contact_monitor = false
-sleeping = false
-can_sleep = true
-linear_velocity = Vector2( 0, 0 )
-linear_damp = -1.0
-angular_velocity = 0.0
-angular_damp = -1.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D2"]
-
-shape = SubResource( 2 )
-
-[node name="RigidBody2D3" type="RigidBody2D" parent="."]
-
-position = Vector2( 116, -211 )
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-mode = 0
-mass = 0.5
-friction = 1.0
-bounce = 0.0
-gravity_scale = 10.0
-custom_integrator = false
-continuous_cd = 0
-contacts_reported = 0
-contact_monitor = false
-sleeping = false
-can_sleep = true
-linear_velocity = Vector2( 0, 0 )
-linear_damp = -1.0
-angular_velocity = 0.0
-angular_damp = -1.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D3"]
-
-shape = SubResource( 2 )
-
-[node name="RigidBody2D4" type="RigidBody2D" parent="."]
-
-position = Vector2( 139, -243 )
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-mode = 0
-mass = 0.5
-friction = 1.0
-bounce = 0.0
-gravity_scale = 10.0
-custom_integrator = false
-continuous_cd = 0
-contacts_reported = 0
-contact_monitor = false
-sleeping = false
-can_sleep = true
-linear_velocity = Vector2( 0, 0 )
-linear_damp = -1.0
-angular_velocity = 0.0
-angular_damp = -1.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D4"]
-
-shape = SubResource( 2 )
-
-[node name="RigidBody2D5" type="RigidBody2D" parent="."]
-
-position = Vector2( 112, -252 )
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-mode = 0
-mass = 0.5
-friction = 1.0
-bounce = 0.0
-gravity_scale = 10.0
-custom_integrator = false
-continuous_cd = 0
-contacts_reported = 0
-contact_monitor = false
-sleeping = false
-can_sleep = true
-linear_velocity = Vector2( 0, 0 )
-linear_damp = -1.0
-angular_velocity = 0.0
-angular_damp = -1.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D5"]
-
-shape = SubResource( 2 )
-
-[node name="RigidBody2D6" type="RigidBody2D" parent="."]
-
-position = Vector2( 139, -287 )
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-mode = 0
-mass = 0.5
-friction = 1.0
-bounce = 0.0
-gravity_scale = 10.0
-custom_integrator = false
-continuous_cd = 0
-contacts_reported = 0
-contact_monitor = false
-sleeping = false
-can_sleep = true
-linear_velocity = Vector2( 0, 0 )
-linear_damp = -1.0
-angular_velocity = 0.0
-angular_damp = -1.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D6"]
-
-shape = SubResource( 2 )
-
-[node name="RigidBody2D7" type="RigidBody2D" parent="."]
-
-position = Vector2( 177, -251 )
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-mode = 0
-mass = 0.5
-friction = 1.0
-bounce = 0.0
-gravity_scale = 10.0
-custom_integrator = false
-continuous_cd = 0
-contacts_reported = 0
-contact_monitor = false
-sleeping = false
-can_sleep = true
-linear_velocity = Vector2( 0, 0 )
-linear_damp = -1.0
-angular_velocity = 0.0
-angular_damp = -1.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D7"]
-
-shape = SubResource( 2 )
-
-[node name="RigidBody2D8" type="RigidBody2D" parent="."]
-
-position = Vector2( 183, -200 )
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-mode = 0
-mass = 0.5
-friction = 1.0
-bounce = 0.0
-gravity_scale = 10.0
-custom_integrator = false
-continuous_cd = 0
-contacts_reported = 0
-contact_monitor = false
-sleeping = false
-can_sleep = true
-linear_velocity = Vector2( 0, 0 )
-linear_damp = -1.0
-angular_velocity = 0.0
-angular_damp = -1.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D8"]
-
-shape = SubResource( 2 )
+occluder_light_mask = 1
+tile_data = PoolIntArray( -262148, 0, -262146, 0, -262145, 0, -327680, 0, -327679, 0, -327678, 0, -196612, 17, -196610, 0, -131076, 17, -131074, 0, -65540, 17, -65538, 0, -4, 17, -2, 33, -65535, 34, -65506, 33, -65505, 35, -65504, 34, 65532, 17, 32, 36, 131070, 31, 65537, 32, 65542, 7, 65543, 8, 65544, 9, 65545, 10, 65546, 11, 65547, 12, 65548, 13, 65549, 14, 65550, 15, 65551, 16, 65552, 17, 65553, 18, 65554, 19, 65555, 20, 65556, 21, 65557, 22, 65558, 23, 65559, 24, 65560, 25, 65561, 26, 65562, 27, 65563, 28, 65564, 29, 65565, 30, 65566, 31, 65567, 37, 65568, 32, 196607, 35, 131072, 35 )
 
 
