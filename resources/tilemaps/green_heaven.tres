@@ -1,56 +1,106 @@
-[gd_resource type="TileSet" load_steps=12 format=2]
+[gd_resource type="TileSet" load_steps=22 format=2]
 
 [ext_resource path="res://resources/art/maps/green_heaven/green_heaven.png" type="Texture" id=1]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=20]
 
 custom_solver_bias = 0.0
 extents = Vector2( 32, 32 )
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=21]
+
+custom_solver_bias = 0.0
+extents = Vector2( 30, 32 )
+
+[sub_resource type="RectangleShape2D" id=22]
 
 custom_solver_bias = 0.0
 extents = Vector2( 32, 28 )
 
-[sub_resource type="ConvexPolygonShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=12]
+
+custom_solver_bias = 0.0
+extents = Vector2( 28, 32 )
+
+[sub_resource type="RectangleShape2D" id=13]
+
+custom_solver_bias = 0.0
+extents = Vector2( 30, 32 )
+
+[sub_resource type="RectangleShape2D" id=14]
+
+custom_solver_bias = 0.0
+extents = Vector2( 30, 28 )
+
+[sub_resource type="RectangleShape2D" id=15]
+
+custom_solver_bias = 0.0
+extents = Vector2( 30, 28 )
+
+[sub_resource type="RectangleShape2D" id=16]
+
+custom_solver_bias = 0.0
+extents = Vector2( 30, 28 )
+
+[sub_resource type="RectangleShape2D" id=17]
+
+custom_solver_bias = 0.0
+extents = Vector2( 30, 28 )
+
+[sub_resource type="RectangleShape2D" id=18]
+
+custom_solver_bias = 0.0
+extents = Vector2( 28, 28 )
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 30, 32 )
+
+[sub_resource type="RectangleShape2D" id=19]
+
+custom_solver_bias = 0.0
+extents = Vector2( 28, 28 )
+
+[sub_resource type="ConvexPolygonShape2D" id=23]
 
 custom_solver_bias = 0.0
 points = PoolVector2Array( -32, -32, 32, 32, -32, 32 )
 
-[sub_resource type="ConvexPolygonShape2D" id=8]
+[sub_resource type="ConvexPolygonShape2D" id=24]
 
 custom_solver_bias = 0.0
 points = PoolVector2Array( -32, 32, 32, -32, 32, 32 )
 
-[sub_resource type="ConvexPolygonShape2D" id=9]
+[sub_resource type="ConvexPolygonShape2D" id=25]
 
 custom_solver_bias = 0.0
 points = PoolVector2Array( -32, -32, 32, -32, -32, 32 )
 
-[sub_resource type="ConvexPolygonShape2D" id=10]
+[sub_resource type="ConvexPolygonShape2D" id=26]
 
 custom_solver_bias = 0.0
 points = PoolVector2Array( -32, -32, 32, -32, 32, 32 )
 
-[sub_resource type="SegmentShape2D" id=4]
+[sub_resource type="SegmentShape2D" id=8]
 
 custom_solver_bias = 0.0
 a = Vector2( -32, 0 )
 b = Vector2( 32, 0 )
 
-[sub_resource type="SegmentShape2D" id=5]
+[sub_resource type="SegmentShape2D" id=9]
 
 custom_solver_bias = 0.0
 a = Vector2( 32, 32 )
 b = Vector2( 32, -32 )
 
-[sub_resource type="SegmentShape2D" id=6]
+[sub_resource type="SegmentShape2D" id=10]
 
 custom_solver_bias = 0.0
 a = Vector2( -32, 32 )
 b = Vector2( 32, 32 )
 
-[sub_resource type="SegmentShape2D" id=7]
+[sub_resource type="SegmentShape2D" id=11]
 
 custom_solver_bias = 0.0
 a = Vector2( -32, -32 )
@@ -67,7 +117,7 @@ b = Vector2( -32, 32 )
 0/navigation_offset = Vector2( 32, 32 )
 0/shapes = [ {
 "one_way": false,
-"shape": SubResource( 1 ),
+"shape": SubResource( 20 ),
 "shape_offset": Vector2( 32, 32 )
 } ]
 1/name = "1"
@@ -79,7 +129,7 @@ b = Vector2( -32, 32 )
 1/navigation_offset = Vector2( 32, 32 )
 1/shapes = [ {
 "one_way": false,
-"shape": SubResource( 1 ),
+"shape": SubResource( 20 ),
 "shape_offset": Vector2( 32, 32 )
 } ]
 2/name = "2"
@@ -91,7 +141,7 @@ b = Vector2( -32, 32 )
 2/navigation_offset = Vector2( 32, 32 )
 2/shapes = [ {
 "one_way": false,
-"shape": SubResource( 1 ),
+"shape": SubResource( 20 ),
 "shape_offset": Vector2( 32, 32 )
 } ]
 3/name = "3"
@@ -127,7 +177,7 @@ b = Vector2( -32, 32 )
 5/navigation_offset = Vector2( 32, 32 )
 5/shapes = [ {
 "one_way": false,
-"shape": SubResource( 1 ),
+"shape": SubResource( 20 ),
 "shape_offset": Vector2( 32, 32 )
 } ]
 6/name = "6"
@@ -139,7 +189,7 @@ b = Vector2( -32, 32 )
 6/navigation_offset = Vector2( 32, 32 )
 6/shapes = [ {
 "one_way": false,
-"shape": SubResource( 1 ),
+"shape": SubResource( 20 ),
 "shape_offset": Vector2( 32, 32 )
 } ]
 7/name = "7"
@@ -151,7 +201,7 @@ b = Vector2( -32, 32 )
 7/navigation_offset = Vector2( 32, 32 )
 7/shapes = [ {
 "one_way": false,
-"shape": SubResource( 1 ),
+"shape": SubResource( 20 ),
 "shape_offset": Vector2( 32, 32 )
 } ]
 8/name = "8"
@@ -163,7 +213,7 @@ b = Vector2( -32, 32 )
 8/navigation_offset = Vector2( 32, 32 )
 8/shapes = [ {
 "one_way": false,
-"shape": SubResource( 1 ),
+"shape": SubResource( 20 ),
 "shape_offset": Vector2( 32, 32 )
 } ]
 9/name = "9"
@@ -175,7 +225,7 @@ b = Vector2( -32, 32 )
 9/navigation_offset = Vector2( 32, 32 )
 9/shapes = [ {
 "one_way": false,
-"shape": SubResource( 1 ),
+"shape": SubResource( 20 ),
 "shape_offset": Vector2( 32, 32 )
 } ]
 10/name = "10"
@@ -187,7 +237,7 @@ b = Vector2( -32, 32 )
 10/navigation_offset = Vector2( 32, 32 )
 10/shapes = [ {
 "one_way": false,
-"shape": SubResource( 1 ),
+"shape": SubResource( 20 ),
 "shape_offset": Vector2( 32, 32 )
 } ]
 11/name = "11"
@@ -199,7 +249,7 @@ b = Vector2( -32, 32 )
 11/navigation_offset = Vector2( 32, 32 )
 11/shapes = [ {
 "one_way": false,
-"shape": SubResource( 1 ),
+"shape": SubResource( 20 ),
 "shape_offset": Vector2( 32, 32 )
 } ]
 12/name = "12"
@@ -211,7 +261,7 @@ b = Vector2( -32, 32 )
 12/navigation_offset = Vector2( 32, 32 )
 12/shapes = [ {
 "one_way": false,
-"shape": SubResource( 1 ),
+"shape": SubResource( 20 ),
 "shape_offset": Vector2( 32, 32 )
 } ]
 13/name = "13"
@@ -223,7 +273,7 @@ b = Vector2( -32, 32 )
 13/navigation_offset = Vector2( 32, 32 )
 13/shapes = [ {
 "one_way": false,
-"shape": SubResource( 1 ),
+"shape": SubResource( 20 ),
 "shape_offset": Vector2( 32, 32 )
 } ]
 14/name = "14"
@@ -235,7 +285,7 @@ b = Vector2( -32, 32 )
 14/navigation_offset = Vector2( 32, 32 )
 14/shapes = [ {
 "one_way": false,
-"shape": SubResource( 1 ),
+"shape": SubResource( 20 ),
 "shape_offset": Vector2( 32, 32 )
 } ]
 15/name = "15"
@@ -247,7 +297,7 @@ b = Vector2( -32, 32 )
 15/navigation_offset = Vector2( 32, 32 )
 15/shapes = [ {
 "one_way": false,
-"shape": SubResource( 1 ),
+"shape": SubResource( 20 ),
 "shape_offset": Vector2( 32, 32 )
 } ]
 16/name = "16"
@@ -259,7 +309,7 @@ b = Vector2( -32, 32 )
 16/navigation_offset = Vector2( 32, 32 )
 16/shapes = [ {
 "one_way": false,
-"shape": SubResource( 1 ),
+"shape": SubResource( 20 ),
 "shape_offset": Vector2( 32, 32 )
 } ]
 17/name = "17"
@@ -271,8 +321,8 @@ b = Vector2( -32, 32 )
 17/navigation_offset = Vector2( 32, 32 )
 17/shapes = [ {
 "one_way": false,
-"shape": SubResource( 1 ),
-"shape_offset": Vector2( 32, 32 )
+"shape": SubResource( 21 ),
+"shape_offset": Vector2( 30, 32 )
 } ]
 18/name = "18"
 18/texture = ExtResource( 1 )
@@ -283,7 +333,7 @@ b = Vector2( -32, 32 )
 18/navigation_offset = Vector2( 32, 32 )
 18/shapes = [ {
 "one_way": false,
-"shape": SubResource( 1 ),
+"shape": SubResource( 20 ),
 "shape_offset": Vector2( 32, 32 )
 } ]
 19/name = "19"
@@ -295,7 +345,7 @@ b = Vector2( -32, 32 )
 19/navigation_offset = Vector2( 32, 32 )
 19/shapes = [ {
 "one_way": false,
-"shape": SubResource( 2 ),
+"shape": SubResource( 22 ),
 "shape_offset": Vector2( 32, 36 )
 } ]
 20/name = "20"
@@ -307,7 +357,7 @@ b = Vector2( -32, 32 )
 20/navigation_offset = Vector2( 32, 32 )
 20/shapes = [ {
 "one_way": false,
-"shape": SubResource( 2 ),
+"shape": SubResource( 22 ),
 "shape_offset": Vector2( 32, 36 )
 } ]
 21/name = "21"
@@ -319,7 +369,7 @@ b = Vector2( -32, 32 )
 21/navigation_offset = Vector2( 32, 32 )
 21/shapes = [ {
 "one_way": false,
-"shape": SubResource( 1 ),
+"shape": SubResource( 12 ),
 "shape_offset": Vector2( 32, 32 )
 } ]
 22/name = "22"
@@ -331,8 +381,8 @@ b = Vector2( -32, 32 )
 22/navigation_offset = Vector2( 32, 32 )
 22/shapes = [ {
 "one_way": false,
-"shape": SubResource( 1 ),
-"shape_offset": Vector2( 32, 32 )
+"shape": SubResource( 13 ),
+"shape_offset": Vector2( 34, 32 )
 } ]
 23/name = "23"
 23/texture = ExtResource( 1 )
@@ -343,8 +393,8 @@ b = Vector2( -32, 32 )
 23/navigation_offset = Vector2( 32, 32 )
 23/shapes = [ {
 "one_way": false,
-"shape": SubResource( 2 ),
-"shape_offset": Vector2( 32, 36 )
+"shape": SubResource( 14 ),
+"shape_offset": Vector2( 34, 36 )
 } ]
 24/name = "24"
 24/texture = ExtResource( 1 )
@@ -355,8 +405,8 @@ b = Vector2( -32, 32 )
 24/navigation_offset = Vector2( 32, 32 )
 24/shapes = [ {
 "one_way": false,
-"shape": SubResource( 1 ),
-"shape_offset": Vector2( 32, 32 )
+"shape": SubResource( 20 ),
+"shape_offset": Vector2( 30, 32 )
 } ]
 25/name = "25"
 25/texture = ExtResource( 1 )
@@ -367,8 +417,8 @@ b = Vector2( -32, 32 )
 25/navigation_offset = Vector2( 32, 32 )
 25/shapes = [ {
 "one_way": false,
-"shape": SubResource( 2 ),
-"shape_offset": Vector2( 32, 36 )
+"shape": SubResource( 15 ),
+"shape_offset": Vector2( 30, 36 )
 } ]
 26/name = "26"
 26/texture = ExtResource( 1 )
@@ -379,8 +429,8 @@ b = Vector2( -32, 32 )
 26/navigation_offset = Vector2( 32, 32 )
 26/shapes = [ {
 "one_way": false,
-"shape": SubResource( 2 ),
-"shape_offset": Vector2( 32, 36 )
+"shape": SubResource( 16 ),
+"shape_offset": Vector2( 34, 36 )
 } ]
 27/name = "27"
 27/texture = ExtResource( 1 )
@@ -391,8 +441,8 @@ b = Vector2( -32, 32 )
 27/navigation_offset = Vector2( 32, 32 )
 27/shapes = [ {
 "one_way": false,
-"shape": SubResource( 2 ),
-"shape_offset": Vector2( 32, 36 )
+"shape": SubResource( 17 ),
+"shape_offset": Vector2( 30, 36 )
 } ]
 28/name = "28"
 28/texture = ExtResource( 1 )
@@ -403,7 +453,7 @@ b = Vector2( -32, 32 )
 28/navigation_offset = Vector2( 32, 32 )
 28/shapes = [ {
 "one_way": false,
-"shape": SubResource( 1 ),
+"shape": SubResource( 20 ),
 "shape_offset": Vector2( 32, 32 )
 } ]
 29/name = "29"
@@ -415,7 +465,7 @@ b = Vector2( -32, 32 )
 29/navigation_offset = Vector2( 32, 32 )
 29/shapes = [ {
 "one_way": false,
-"shape": SubResource( 2 ),
+"shape": SubResource( 18 ),
 "shape_offset": Vector2( 32, 36 )
 } ]
 30/name = "30"
@@ -427,7 +477,7 @@ b = Vector2( -32, 32 )
 30/navigation_offset = Vector2( 32, 32 )
 30/shapes = [ {
 "one_way": true,
-"shape": SubResource( 2 ),
+"shape": SubResource( 19 ),
 "shape_offset": Vector2( 32, 36 )
 } ]
 31/name = "31"
@@ -439,7 +489,7 @@ b = Vector2( -32, 32 )
 31/navigation_offset = Vector2( 32, 32 )
 31/shapes = [ {
 "one_way": false,
-"shape": SubResource( 3 ),
+"shape": SubResource( 23 ),
 "shape_offset": Vector2( 32, 32 )
 } ]
 32/name = "32"
@@ -451,7 +501,7 @@ b = Vector2( -32, 32 )
 32/navigation_offset = Vector2( 32, 32 )
 32/shapes = [ {
 "one_way": false,
-"shape": SubResource( 8 ),
+"shape": SubResource( 24 ),
 "shape_offset": Vector2( 32, 32 )
 } ]
 33/name = "33"
@@ -463,7 +513,7 @@ b = Vector2( -32, 32 )
 33/navigation_offset = Vector2( 32, 32 )
 33/shapes = [ {
 "one_way": false,
-"shape": SubResource( 9 ),
+"shape": SubResource( 25 ),
 "shape_offset": Vector2( 32, 32 )
 } ]
 34/name = "34"
@@ -475,7 +525,7 @@ b = Vector2( -32, 32 )
 34/navigation_offset = Vector2( 32, 32 )
 34/shapes = [ {
 "one_way": false,
-"shape": SubResource( 10 ),
+"shape": SubResource( 26 ),
 "shape_offset": Vector2( 32, 32 )
 } ]
 35/name = "35"
@@ -487,7 +537,7 @@ b = Vector2( -32, 32 )
 35/navigation_offset = Vector2( 32, 32 )
 35/shapes = [ {
 "one_way": false,
-"shape": SubResource( 4 ),
+"shape": SubResource( 8 ),
 "shape_offset": Vector2( 32, 0 )
 } ]
 36/name = "36"
@@ -499,7 +549,7 @@ b = Vector2( -32, 32 )
 36/navigation_offset = Vector2( 32, 32 )
 36/shapes = [ {
 "one_way": false,
-"shape": SubResource( 5 ),
+"shape": SubResource( 9 ),
 "shape_offset": Vector2( 32, 32 )
 } ]
 37/name = "37"
@@ -511,7 +561,7 @@ b = Vector2( -32, 32 )
 37/navigation_offset = Vector2( 32, 32 )
 37/shapes = [ {
 "one_way": false,
-"shape": SubResource( 6 ),
+"shape": SubResource( 10 ),
 "shape_offset": Vector2( 32, 32 )
 } ]
 38/name = "38"
@@ -523,7 +573,7 @@ b = Vector2( -32, 32 )
 38/navigation_offset = Vector2( 32, 32 )
 38/shapes = [ {
 "one_way": false,
-"shape": SubResource( 7 ),
+"shape": SubResource( 11 ),
 "shape_offset": Vector2( 32, 32 )
 } ]
 39/name = "39"
@@ -534,5 +584,5 @@ b = Vector2( -32, 32 )
 39/occluder_offset = Vector2( 32, 32 )
 39/navigation_offset = Vector2( 32, 32 )
 39/shapes = [  ]
-_sections_unfolded = [ "34" ]
+_sections_unfolded = [ "0", "29", "30", "34" ]
 
