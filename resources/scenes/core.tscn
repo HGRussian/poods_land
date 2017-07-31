@@ -1,18 +1,8 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://resources/scripts/core.gd" type="Script" id=1]
+[ext_resource path="res://resources/scenes/core.tscn" type="PackedScene" id=1]
 
-[node name="core" type="Node"]
 
-script = ExtResource( 1 )
-start_state = 1
-
-[node name="audio" type="AudioStreamPlayer" parent="."]
-
-stream = null
-volume_db = 0.0
-autoplay = false
-mix_target = 0
-bus = "Master"
+[node name="core" instance=ExtResource( 1 )]
 
 

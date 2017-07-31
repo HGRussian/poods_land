@@ -7,8 +7,6 @@
 
 [node name="poods" parent="." instance=ExtResource( 1 )]
 
-angular_damp = -1.0
-
 [node name="Camera2D" type="Camera2D" parent="poods"]
 
 anchor_mode = 1
@@ -35,6 +33,7 @@ _sections_unfolded = [ "Smoothing" ]
 
 [node name="TileMap" type="TileMap" parent="."]
 
+position = Vector2( -15, 0 )
 mode = 0
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 64, 64 )
@@ -49,6 +48,6 @@ collision_bounce = 0.0
 collision_layer = 1
 collision_mask = 1
 occluder_light_mask = 1
-tile_data = PoolIntArray( -2, 33, -65535, 34, 131070, 31, 65537, 32, 196607, 35, 131072, 35 )
+tile_data = PoolIntArray( 131070, 20, 131071, 20, 65536, 20, 65537, 20, 65538, 0, 65539, 0, 65540, 0, 65541, 0, 65542, 0 )
 
 

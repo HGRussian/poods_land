@@ -1,10 +1,10 @@
 extends RigidBody2D
 
 # remember some nodes
-onready var det_up = $detectors/up
-onready var det_down = $detectors/down
-onready var det_left = $detectors/left
-onready var det_right = $detectors/right
+onready var detectors = $detectors
+onready var det_down = detectors.get_node("down")
+onready var det_left = detectors.get_node("left")
+onready var det_right = detectors.get_node("right")
 
 # dec some stats (need to move on)
 var SPEED = 400
@@ -32,7 +32,7 @@ var move_left = false
 var move_right = false
 var move_jump = false
 var move_sprint = false
-	
+
 func _fixed_process(delta):
 	var lin_vec = Vector2()
 	# making life a bit easier with shorty input vars!
@@ -42,12 +42,12 @@ func _fixed_process(delta):
 	move_sprint = Input.is_action_pressed("move_sprint")
 
 	#process mirroring
-	if move_left: 
+	if move_left:
 		$tex.flip_h=true
 		scl=-1
 		if wallslide_time > 0 and !det_down.is_colliding():
 			$tex.flip_h=false
-	elif move_right: 
+	elif move_right:
 		$tex.flip_h=false
 		scl=1
 		if wallslide_time > 0 and !det_down.is_colliding():
@@ -63,7 +63,7 @@ func _fixed_process(delta):
 		if test_motion(Vector2(0,1)):
 			cjumps = 0
 			onair_time = 0
-		
+
 		#anim
 		if abs(linear_velocity.x) > 25:
 			if move_left or move_right:
@@ -75,7 +75,6 @@ func _fixed_process(delta):
 				set_anim("brake")
 		else:
 			set_anim("idle")
-		
 		var normal = det_down.get_collision_normal()
 		if abs(rot) < 0.8 or move_sprint:
 			rot_target = normal.angle() + deg2rad(90)
@@ -92,7 +91,7 @@ func _fixed_process(delta):
 		elif linear_velocity.y < 0:
 			rot_target=-deg2rad(5)*scl
 			set_anim("jump")
-	
+
 	# processing walls
 	if det_left.is_colliding():
 	# left wall
@@ -100,12 +99,12 @@ func _fixed_process(delta):
 		var normal = det_left.get_collision_normal()
 		if abs(rot) < 0.1:
 			rot_target = normal.angle()
-		if move_jump: 
+		if move_jump:
 			linear_damp = -1
 			lin_vec.x+=SPEED*WALL_JUMP_FACTOR
 			linear_velocity.y=-jump_speed
 		if move_right and wallslide_time > STICKINESS and !det_down.is_colliding() and !move_jump: lin_vec.x+=SPEED
-		if move_left: 
+		if move_left:
 			linear_damp = SLIDE_FACTOR
 			if move_jump:
 				linear_velocity.y-=jump_speed/2
@@ -122,7 +121,7 @@ func _fixed_process(delta):
 			# но я понятия не имею как сделать иначе
 			# please help
 			rot_target = normal.angle() - abs(normal.angle())/normal.angle() * deg2rad(180)
-		if move_jump: 
+		if move_jump:
 			linear_damp = -1
 			lin_vec.x-=SPEED*WALL_JUMP_FACTOR
 			linear_velocity.y=-jump_speed
