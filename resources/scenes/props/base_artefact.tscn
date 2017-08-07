@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://resources/scripts/props/base_artefact_load.gd" type="Script" id=1]
+
+[node name="artefact" type="Sprite"]
+
+script = ExtResource( 1 )
+
+
