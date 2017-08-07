@@ -60,8 +60,19 @@ tracks/3/keys = {
 "update": 1,
 "values": [ true ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("artefact/desc:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=3]
 
 resource_name = "pick"
 length = 1.0
@@ -111,18 +122,51 @@ tracks/3/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("artefact/desc:self_modulate")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("artefact/desc:margin_top")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ -57.0, -45.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("artefact/desc:margin_bottom")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0.0, 12.0 ]
+}
 
-[sub_resource type="Curve" id=3]
+[sub_resource type="Curve" id=4]
 
 min_value = 0.0
 max_value = 1.0
 bake_resolution = 100
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=4]
+[sub_resource type="CurveTexture" id=5]
 
 width = 32
-curve = SubResource( 3 )
+curve = SubResource( 4 )
 
 [sub_resource type="ParticlesMaterial" id=6]
 
@@ -153,7 +197,7 @@ angle = 0.0
 angle_random = 0.0
 scale = 1.0
 scale_random = 1.0
-scale_curve = SubResource( 4 )
+scale_curve = SubResource( 5 )
 color = Color( 0.6875, 0, 1, 0.682549 )
 hue_variation = 0.0
 hue_variation_random = 0.0
@@ -197,7 +241,7 @@ playback_process_mode = 1
 playback_default_blend_time = 0.0
 root_node = NodePath("..")
 anims/idle = SubResource( 2 )
-anims/pick = SubResource( 7 )
+anims/pick = SubResource( 3 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
@@ -209,6 +253,11 @@ self_modulate = Color( 1, 1, 1, 0.784314 )
 position = Vector2( 0, -23 )
 texture = ExtResource( 4 )
 _sections_unfolded = [ "Animation", "Offset", "Region", "Transform", "Visibility" ]
+
+[node name="desc" parent="artefact"]
+
+self_modulate = Color( 1, 1, 1, 0 )
+_sections_unfolded = [ "Anchor", "Margin", "Rect", "Visibility", "custom_colors", "custom_constants", "custom_fonts" ]
 
 [node name="Particles2D" type="Particles2D" parent="."]
 
@@ -236,3 +285,4 @@ _sections_unfolded = [ "Process Material", "Textures", "Transform" ]
 [connection signal="body_entered" from="." to="." method="_on_artefact_body_entered"]
 
 
+[editable path="artefact"]
