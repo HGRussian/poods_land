@@ -1,9 +1,8 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://resources/scripts/props/artefact.gd" type="Script" id=1]
 [ext_resource path="res://resources/art/props/artefact_platform.png" type="Texture" id=2]
 [ext_resource path="res://resources/scenes/props/base_artefact.tscn" type="PackedScene" id=3]
-[ext_resource path="res://resources/art/artefacts/double_jump.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -60,22 +59,11 @@ tracks/3/keys = {
 "update": 1,
 "values": [ true ]
 }
-tracks/4/type = "value"
-tracks/4/path = NodePath("artefact/desc:self_modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ) ]
-}
 
 [sub_resource type="Animation" id=3]
 
 resource_name = "pick"
-length = 1.0
+length = 2.5
 loop = false
 step = 0.1
 tracks/0/type = "value"
@@ -123,37 +111,37 @@ tracks/3/keys = {
 "values": [ false ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("artefact/desc:self_modulate")
-tracks/4/interp = 2
+tracks/4/path = NodePath("artefact/desc:margin_top")
+tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.1, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("artefact/desc:margin_top")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/keys = {
-"times": PoolRealArray( 0, 1 ),
+"times": PoolRealArray( 0, 2.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ -57.0, -45.0 ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("artefact/desc:margin_bottom")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/keys = {
+"times": PoolRealArray( 0, 2.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0.0, 12.0 ]
+}
 tracks/6/type = "value"
-tracks/6/path = NodePath("artefact/desc:margin_bottom")
+tracks/6/path = NodePath("artefact/desc:self_modulate")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/keys = {
-"times": PoolRealArray( 0, 1 ),
+"times": PoolRealArray( 0.5, 2.5 ),
 "transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 0.0, 12.0 ]
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
 [sub_resource type="Curve" id=4]
@@ -251,13 +239,12 @@ autoplay = "idle"
 
 self_modulate = Color( 1, 1, 1, 0.784314 )
 position = Vector2( 0, -23 )
-texture = ExtResource( 4 )
 _sections_unfolded = [ "Animation", "Offset", "Region", "Transform", "Visibility" ]
 
 [node name="desc" parent="artefact"]
 
-self_modulate = Color( 1, 1, 1, 0 )
-_sections_unfolded = [ "Anchor", "Margin", "Rect", "Visibility", "custom_colors", "custom_constants", "custom_fonts" ]
+visible = false
+_sections_unfolded = [ "Anchor", "Margin", "Material", "Rect", "Visibility", "custom_colors", "custom_constants", "custom_fonts" ]
 
 [node name="Particles2D" type="Particles2D" parent="."]
 
@@ -283,6 +270,8 @@ v_frames = 1
 _sections_unfolded = [ "Process Material", "Textures", "Transform" ]
 
 [connection signal="body_entered" from="." to="." method="_on_artefact_body_entered"]
+
+[connection signal="body_exited" from="." to="." method="_on_artefact_body_exited"]
 
 
 [editable path="artefact"]

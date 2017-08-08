@@ -164,7 +164,7 @@ _sections_unfolded = [ "Angular", "Linear" ]
 
 enabled = true
 exclude_parent = true
-cast_to = Vector2( 0, 18 )
+cast_to = Vector2( 0, 16 )
 collision_layer = 1
 type_mask = 1
 
