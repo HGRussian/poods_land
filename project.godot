@@ -1,7 +1,5 @@
 config_version=3
 
-config_version=null
-
 [application]
 
 config/name="poods_land"
@@ -22,4 +20,7 @@ pick=[ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","
 
 [rendering]
 
+quality/intended_usage/framebuffer_allocation=0
+quality/2d/use_pixel_snap=true
+threads/thread_model=2
 environment/default_environment="res://default_env.tres"

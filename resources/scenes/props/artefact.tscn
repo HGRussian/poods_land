@@ -110,39 +110,6 @@ tracks/3/keys = {
 "update": 1,
 "values": [ false ]
 }
-tracks/4/type = "value"
-tracks/4/path = NodePath("artefact/desc:margin_top")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/keys = {
-"times": PoolRealArray( 0, 2.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ -57.0, -45.0 ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("artefact/desc:margin_bottom")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/keys = {
-"times": PoolRealArray( 0, 2.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 0.0, 12.0 ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("artefact/desc:self_modulate")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/keys = {
-"times": PoolRealArray( 0.5, 2.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
 
 [sub_resource type="Curve" id=4]
 
@@ -207,6 +174,7 @@ audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
 _sections_unfolded = [ "Z" ]
+force_rarity = "random"
 
 [node name="Sprite" type="Sprite" parent="."]
 
@@ -245,6 +213,16 @@ _sections_unfolded = [ "Animation", "Offset", "Region", "Transform", "Visibility
 
 visible = false
 _sections_unfolded = [ "Anchor", "Margin", "Material", "Rect", "Visibility", "custom_colors", "custom_constants", "custom_fonts" ]
+
+[node name="name" parent="artefact"]
+
+visible = false
+_sections_unfolded = [ "Anchor", "Material", "Rect", "Visibility", "custom_colors", "custom_constants", "custom_fonts" ]
+
+[node name="rarity" parent="artefact"]
+
+visible = false
+_sections_unfolded = [ "Anchor", "Material", "Rect", "Visibility", "custom_colors", "custom_constants", "custom_fonts" ]
 
 [node name="Particles2D" type="Particles2D" parent="."]
 

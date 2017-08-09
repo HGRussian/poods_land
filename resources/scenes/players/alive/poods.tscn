@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://resources/scripts/players/poods.gd" type="Script" id=1]
 [ext_resource path="res://resources/art/players/mini_poods.png" type="Texture" id=2]
@@ -132,8 +132,13 @@ tracks/0/keys = {
 [sub_resource type="CapsuleShape2D" id=8]
 
 custom_solver_bias = 0.0
-radius = 8.0
-height = 4.0
+radius = 9.0
+height = 3.0
+
+[sub_resource type="RectangleShape2D" id=9]
+
+custom_solver_bias = 0.0
+extents = Vector2( 9, 8 )
 
 [node name="poods" type="RigidBody2D"]
 
@@ -156,7 +161,7 @@ linear_damp = -1.0
 angular_velocity = 0.0
 angular_damp = -1.0
 script = ExtResource( 1 )
-_sections_unfolded = [ "Angular", "Linear" ]
+_sections_unfolded = [ "Angular", "Linear", "Pickable" ]
 
 [node name="detectors" type="Node2D" parent="."]
 
@@ -212,9 +217,15 @@ _sections_unfolded = [ "Animation" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
-position = Vector2( 0, 6 )
+position = Vector2( 0, 5.5 )
 shape = SubResource( 8 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="artefact_handler" type="Node2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+
+position = Vector2( 0, 5 )
+shape = SubResource( 9 )
 
 

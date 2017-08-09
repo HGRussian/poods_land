@@ -3,7 +3,9 @@ extends Sprite
 ### BASE CONFIG
 var tex = preload("res://resources/art/artefacts/teleport.png")
 var art_name = "teleport"
-var desc = "Fast teleport \n Double tap to teleport!"
+var desc = "Double tap to teleport!"
+var label_name = "Fast Teleport"
+var rarity = "Normal"
 ### END
 
 var count = 0
@@ -21,7 +23,7 @@ var tele_first_side = false # true - right, false - left
 func ch_params( who ):
 ### CHANGING PARAMS HERE
 	tele_range*=1.1
-	cooldown*=0.9
+	cooldown*=0.8
 ### END
 
 func teleport( side ,who): # true - right, false - left
@@ -31,6 +33,8 @@ func teleport( side ,who): # true - right, false - left
 			who.add_child(effect)
 			who.position.x+=tele_range
 		else:
+			var effect = parts.instance()
+			who.add_child(effect)
 			who.position.x-= who.position.x-$ray.get_collision_point().x+8
 	else:
 		if $check.get_overlapping_bodies().size() == 0:
@@ -38,6 +42,8 @@ func teleport( side ,who): # true - right, false - left
 			who.add_child(effect)
 			who.position.x-=tele_range
 		else:
+			var effect = parts.instance()
+			who.add_child(effect)
 			who.position.x-= who.position.x-$ray.get_collision_point().x-8
 
 func _process(delta):
@@ -95,16 +101,15 @@ func added():
 
 func repeat():
 	var who = get_node("../..")
-	who.JUMPS+=1
 	count+=1
 	ch_params(who)
 
 func _init():
 	texture = tex
 	$desc.text = desc
-
-func desc_fix():
-	$desc.rect_position.x = -$desc.rect_size.x/2
+	$name.text = label_name
+	$rarity.text = rarity
+	$rarity.self_modulate = Color(0.5,0.5,1)
 
 func picked( who ):
 	var artefact_handler = who.get_node("artefact_handler")

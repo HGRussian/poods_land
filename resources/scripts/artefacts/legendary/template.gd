@@ -2,8 +2,10 @@ extends Sprite
 
 ### BASE CONFIG
 var tex = preload("res://resources/art/artefacts/ex_jump2.png")
-var art_name = "template"
-var desc = "Template \n your desc here"
+var art_name = "legendary_template"
+var desc = "does nothing."
+var label_name = "Template"
+var rarity = "Legendary"
 ### END
 
 var count = 0
@@ -30,16 +32,15 @@ func added():
 
 func repeat():
 	var who = get_node("../..")
-	who.JUMPS+=1
 	count+=1
 	ch_params(who)
 
 func _init():
 	texture = tex
 	$desc.text = desc
-
-func desc_fix():
-	$desc.rect_position.x = -$desc.rect_size.x/2
+	$name.text = label_name
+	$rarity.text = rarity
+	$rarity.self_modulate = Color(1,0.85,0)
 
 func picked( who ):
 	var artefact_handler = who.get_node("artefact_handler")

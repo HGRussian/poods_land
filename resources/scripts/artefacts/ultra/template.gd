@@ -1,19 +1,25 @@
 extends Sprite
 
 ### BASE CONFIG
-var tex = preload("res://resources/art/artefacts/ex_jump.png")
-var art_name = "ex_jump"
-var desc = "Extra jump \n Get another jump!"
+var tex = preload("res://resources/art/artefacts/ex_jump2.png")
+var art_name = "ultra_template"
+var desc = "does nothing."
+var label_name = "Template"
+var rarity = "Ultra"
 ### END
 
 var count = 0
 ### SELF VARS HERE
-
 ###END
 
 func ch_params( who ):
 ### CHANGING PARAMS HERE
-	who.JUMPS+=1
+	pass
+### END
+
+func _process(delta):
+	var who = get_node("../..")
+### HANDLING PROCESS
 ### END
 
 func added():
@@ -22,20 +28,19 @@ func added():
 	hide()
 	count+=1
 	ch_params(who)
+	set_process(true)
 
 func repeat():
 	var who = get_node("../..")
-	who.JUMPS+=1
 	count+=1
 	ch_params(who)
 
 func _init():
 	texture = tex
 	$desc.text = desc
-	#
-
-func desc_fix():
-	$desc.rect_position.x = -$desc.rect_size.x/2
+	$name.text = label_name
+	$rarity.text = rarity
+	$rarity.self_modulate = Color(1,0,0.2)
 
 func picked( who ):
 	var artefact_handler = who.get_node("artefact_handler")

@@ -8,13 +8,13 @@ onready var det_right = detectors.get_node("right")
 
 # dec some stats (need to move on)
 var SPEED = 400
-var SPRINT_SPEED = 600
+var SPRINT_SPEED = 550
 var JUMP = 400
-var SPRINT_JUMP = 600
+var SPRINT_JUMP = 450
 var WALL_JUMP_FACTOR = 10
 var ACC_FACTOR = 15
 var SLIDE_FACTOR = 10
-var JUMPS = 2
+var JUMPS = 1
 var STICKINESS = 0.3 # seconds
 
 # some useful vars

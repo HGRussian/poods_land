@@ -1,8 +1,18 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://resources/scenes/players/alive/poods.tscn" type="PackedScene" id=1]
 [ext_resource path="res://resources/tilemaps/green_heaven.tres" type="TileSet" id=2]
 [ext_resource path="res://resources/scenes/props/artefact.tscn" type="PackedScene" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 293.255, 10 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 69.576, 10 )
 
 [node name="Node2D" type="Node2D"]
 
@@ -58,13 +68,62 @@ tile_data = PoolIntArray( -8, 0, -7, 0, -4, 0, 65528, 0, 65529, 0, 65532, 0, 131
 [node name="artefact" parent="." instance=ExtResource( 3 )]
 
 position = Vector2( 178, 64 )
+force_rarity = "junk"
 
 [node name="artefact2" parent="." instance=ExtResource( 3 )]
 
-position = Vector2( 255, 64 )
+position = Vector2( 226, 64 )
+force_rarity = "basic"
 
 [node name="artefact3" parent="." instance=ExtResource( 3 )]
 
-position = Vector2( 334, 64 )
+position = Vector2( 274, 64 )
+force_rarity = "normal"
+
+[node name="artefact4" parent="." instance=ExtResource( 3 )]
+
+position = Vector2( 322, 64 )
+force_rarity = "rare"
+
+[node name="artefact5" parent="." instance=ExtResource( 3 )]
+
+position = Vector2( 370, 64 )
+force_rarity = "ultra"
+
+[node name="artefact6" parent="." instance=ExtResource( 3 )]
+
+position = Vector2( 418, 64 )
+force_rarity = "legendary"
+
+[node name="artefact7" parent="." instance=ExtResource( 3 )]
+
+position = Vector2( 466, 64 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+
+position = Vector2( 900, 104 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+
+position = Vector2( 850, 45 )
+rotation = -1.57079
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+
+position = Vector2( 985, 44 )
+rotation = -1.57079
+shape = SubResource( 2 )
 
 
