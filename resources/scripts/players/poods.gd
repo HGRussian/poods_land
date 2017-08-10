@@ -65,7 +65,7 @@ func _fixed_process(delta):
 			onair_time = 0
 
 		#anim
-		if abs(linear_velocity.x) > 25:
+		if abs(linear_velocity.x) > 75:
 			if move_left or move_right:
 				if move_sprint:
 					set_anim("sprint")

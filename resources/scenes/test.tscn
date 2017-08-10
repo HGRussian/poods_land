@@ -116,8 +116,8 @@ shape = SubResource( 1 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
 
-position = Vector2( 850, 45 )
-rotation = -1.57079
+position = Vector2( 809, 92 )
+rotation = -0.261799
 shape = SubResource( 2 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]

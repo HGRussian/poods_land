@@ -1,28 +1,49 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://resources/scripts/props/particles.gd" type="Script" id=1]
 
-[sub_resource type="Curve" id=1]
+[sub_resource type="Gradient" id=1]
+
+offsets = PoolRealArray( 0, 1 )
+colors = PoolColorArray( 0.457031, 0.457031, 0.457031, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=5]
+
+gradient = SubResource( 1 )
+width = 32
+
+[sub_resource type="Curve" id=3]
+
+min_value = -200.0
+max_value = 200.0
+bake_resolution = 100
+_data = [ Vector2( 0, 200 ), 0.0, 0.0, 0, 0, Vector2( 0.150711, -120.312 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=4]
+
+width = 32
+curve = SubResource( 3 )
+
+[sub_resource type="Curve" id=6]
 
 min_value = 0.0
 max_value = 1.0
 bake_resolution = 100
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=2]
+[sub_resource type="CurveTexture" id=7]
 
 width = 32
-curve = SubResource( 1 )
+curve = SubResource( 6 )
 
-[sub_resource type="ParticlesMaterial" id=3]
+[sub_resource type="ParticlesMaterial" id=8]
 
 trail_divisor = 1
-emission_shape = 1
-emission_sphere_radius = 16.0
+emission_shape = 0
 flag_align_y = false
 flag_rotate_y = false
 flag_disable_z = true
-spread = 180.0
+spread = 15.0
 flatness = 0.0
 gravity = Vector3( 0, -98, 0 )
 initial_velocity = 1.0
@@ -32,7 +53,8 @@ angular_velocity_random = 0.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 linear_accel = 0.0
-linear_accel_random = 0.0
+linear_accel_random = 0.5
+linear_accel_curve = SubResource( 4 )
 radial_accel = 0.0
 radial_accel_random = 0.0
 tangential_accel = 0.0
@@ -42,9 +64,9 @@ damping_random = 0.0
 angle = 0.0
 angle_random = 0.0
 scale = 1.0
-scale_random = 0.0
-scale_curve = SubResource( 2 )
-color = Color( 0.355469, 0.939575, 1, 1 )
+scale_random = 0.5
+scale_curve = SubResource( 7 )
+color_ramp = SubResource( 5 )
 hue_variation = 0.0
 hue_variation_random = 0.0
 anim_speed = 0.0
@@ -52,30 +74,30 @@ anim_speed_random = 0.0
 anim_offset = 0.0
 anim_offset_random = 0.0
 anim_loop = false
-_sections_unfolded = [ "Gravity" ]
+_sections_unfolded = [ "Emission Shape", "Initial Velocity", "Linear Accel" ]
 
-[node name="particles" type="Particles2D"]
+[node name="smoke" type="Particles2D"]
 
 emitting = true
-amount = 128
-lifetime = 0.5
+amount = 16
+lifetime = 1.0
 one_shot = true
 preprocess = 0.0
-speed_scale = 1.0
+speed_scale = 2.0
 explosiveness = 0.5
 randomness = 0.0
 fixed_fps = 0
 fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
 local_coords = false
-draw_order = -148562143
-process_material = SubResource( 3 )
+draw_order = 97655824
+process_material = SubResource( 8 )
 texture = null
 normal_map = null
 h_frames = 1
 v_frames = 1
 script = ExtResource( 1 )
-_sections_unfolded = [ "Drawing", "Time" ]
+_sections_unfolded = [ "Drawing", "Process Material", "Textures", "Time" ]
 destroy = true
 
 [node name="Timer" type="Timer" parent="."]
