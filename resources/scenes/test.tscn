@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://resources/scenes/players/alive/poods.tscn" type="PackedScene" id=1]
 [ext_resource path="res://resources/tilemaps/green_heaven.tres" type="TileSet" id=2]
 [ext_resource path="res://resources/scenes/props/artefact.tscn" type="PackedScene" id=3]
+[ext_resource path="res://resources/scenes/props/weapon_prop.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -126,4 +127,13 @@ position = Vector2( 985, 44 )
 rotation = -1.57079
 shape = SubResource( 2 )
 
+[node name="weapon_prop" parent="." instance=ExtResource( 4 )]
 
+position = Vector2( -147, 54 )
+
+[node name="weapon_prop2" parent="." instance=ExtResource( 4 )]
+
+position = Vector2( -105, 54 )
+
+
+[editable path="poods"]

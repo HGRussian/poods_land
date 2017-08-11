@@ -44,7 +44,7 @@ angle_random = 0.0
 scale = 1.0
 scale_random = 0.0
 scale_curve = SubResource( 2 )
-color = Color( 0.355469, 0.939575, 1, 1 )
+color = Color( 0.390717, 1, 0.355469, 1 )
 hue_variation = 0.0
 hue_variation_random = 0.0
 anim_speed = 0.0
@@ -52,7 +52,7 @@ anim_speed_random = 0.0
 anim_offset = 0.0
 anim_offset_random = 0.0
 anim_loop = false
-_sections_unfolded = [ "Gravity" ]
+_sections_unfolded = [ "Color", "Emission Shape", "Gravity" ]
 
 [node name="particles" type="Particles2D"]
 
@@ -75,7 +75,7 @@ normal_map = null
 h_frames = 1
 v_frames = 1
 script = ExtResource( 1 )
-_sections_unfolded = [ "Drawing", "Time" ]
+_sections_unfolded = [ "Drawing", "Process Material", "Time" ]
 destroy = true
 
 [node name="Timer" type="Timer" parent="."]

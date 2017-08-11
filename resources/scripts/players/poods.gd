@@ -52,11 +52,6 @@ func _fixed_process(delta):
 		scl=1
 		if wallslide_time > 0 and !det_down.is_colliding():
 			$tex.flip_h=true
-	elif abs(linear_velocity.x) > 100:
-		if linear_velocity.x > 0:
-			$tex.flip_h=false
-		elif linear_velocity.x < 0:
-			$tex.flip_h=true
 
 	# processing floor 
 	if det_down.is_colliding():

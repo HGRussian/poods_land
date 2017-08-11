@@ -5,9 +5,9 @@
 [sub_resource type="Gradient" id=1]
 
 offsets = PoolRealArray( 0, 1 )
-colors = PoolColorArray( 0.457031, 0.457031, 0.457031, 1, 1, 1, 1, 1 )
+colors = PoolColorArray( 0.863281, 0.863281, 0.863281, 1, 0.457031, 0.457031, 0.457031, 1 )
 
-[sub_resource type="GradientTexture" id=5]
+[sub_resource type="GradientTexture" id=2]
 
 gradient = SubResource( 1 )
 width = 32
@@ -17,26 +17,26 @@ width = 32
 min_value = -200.0
 max_value = 200.0
 bake_resolution = 100
-_data = [ Vector2( 0, 200 ), 0.0, 0.0, 0, 0, Vector2( 0.150711, -120.312 ), 0.0, 0.0, 0, 0 ]
+_data = [ Vector2( 0, 94.5312 ), 0.0, 0.0, 0, 0, Vector2( 0.151505, -90.2344 ), 0.0, 0.0, 0, 0 ]
 
 [sub_resource type="CurveTexture" id=4]
 
 width = 32
 curve = SubResource( 3 )
 
-[sub_resource type="Curve" id=6]
+[sub_resource type="Curve" id=5]
 
 min_value = 0.0
 max_value = 1.0
 bake_resolution = 100
-_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+_data = [ Vector2( 0, 0.242188 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=7]
+[sub_resource type="CurveTexture" id=6]
 
 width = 32
-curve = SubResource( 6 )
+curve = SubResource( 5 )
 
-[sub_resource type="ParticlesMaterial" id=8]
+[sub_resource type="ParticlesMaterial" id=7]
 
 trail_divisor = 1
 emission_shape = 0
@@ -65,8 +65,8 @@ angle = 0.0
 angle_random = 0.0
 scale = 1.0
 scale_random = 0.5
-scale_curve = SubResource( 7 )
-color_ramp = SubResource( 5 )
+scale_curve = SubResource( 6 )
+color_ramp = SubResource( 2 )
 hue_variation = 0.0
 hue_variation_random = 0.0
 anim_speed = 0.0
@@ -74,12 +74,12 @@ anim_speed_random = 0.0
 anim_offset = 0.0
 anim_offset_random = 0.0
 anim_loop = false
-_sections_unfolded = [ "Emission Shape", "Initial Velocity", "Linear Accel" ]
+_sections_unfolded = [ "Color", "Emission Shape", "Gravity", "Initial Velocity", "Linear Accel", "Scale" ]
 
 [node name="smoke" type="Particles2D"]
 
 emitting = true
-amount = 16
+amount = 128
 lifetime = 1.0
 one_shot = true
 preprocess = 0.0
@@ -91,7 +91,7 @@ fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
 local_coords = false
 draw_order = 97655824
-process_material = SubResource( 8 )
+process_material = SubResource( 7 )
 texture = null
 normal_map = null
 h_frames = 1

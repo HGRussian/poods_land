@@ -2,13 +2,20 @@ extends Sprite
 
 var spread = 50
 var recoil = 60
-var reload = 0.3
+var reload = 0.5
+var double_hand = true
 
 var smoke_scn = preload("res://resources/scenes/props/shoot_smoke.tscn")
 var hit_smoke_scn = preload("res://resources/scenes/props/hit_smoke.tscn")
 var bullet_line_scn = preload("res://resources/scenes/props/bullet_line.tscn")
 
 func _ready():
+	update_state()
+
+func update_state():
+	reload*=get_parent().reload_factor
+	spread*=get_parent().spread_factor
+	
 	$reload.wait_time = reload
 
 func shoot():
@@ -19,7 +26,7 @@ func shoot():
 	var smoke = smoke_scn.instance()
 	var hit_smoke = hit_smoke_scn.instance()
 	var scale_x = get_parent().scale.x
-	var s_y = randi()%spread
+	var s_y = randi()%int(spread)
 	
 	bullet_line.rotation = Vector2().angle_to_point(scale_x*$ray.cast_to)+3.14
 	bullet_line.position = $ray.global_position-Vector2(0,2)
