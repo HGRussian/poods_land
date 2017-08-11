@@ -19,8 +19,8 @@ func _process(delta):
 		picked = true
 		$anim.play("picked")
 		$Label.hide()
-		yield($anim,"animation_finished")
 		pl_body.get_node("weapon_handler").add_weapon(gun_scn)
+		yield($anim,"animation_finished")
 		queue_free()
 
 func _on_weapon_prop_body_entered( body ):
