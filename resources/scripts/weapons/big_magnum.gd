@@ -1,11 +1,11 @@
 extends Sprite
 
-var label_name = "Magnum"
-var gun_name = "magnum"
-var spread = 50
-var recoil = 60
-var reload = 0.5
-var double_hand = true
+var label_name = "Big Magnum"
+var gun_name = "big_magnum"
+var spread = 40
+var recoil = 100
+var reload = 0.4
+var double_hand = false
 
 var smoke_scn = preload("res://resources/scenes/props/shoot_smoke.tscn")
 var hit_smoke_scn = preload("res://resources/scenes/props/hit_smoke.tscn")
@@ -17,12 +17,13 @@ func _ready():
 func update_state():
 	reload*=get_parent().reload_factor
 	spread*=get_parent().spread_factor
-
+	
 	$reload.wait_time = reload
 
 func shoot():
 	if $reload.get_time_left() > 0:
 		return
+	
 	var bullet_line = bullet_line_scn.instance()
 	var smoke = smoke_scn.instance()
 	var hit_smoke = hit_smoke_scn.instance()
@@ -30,6 +31,7 @@ func shoot():
 	var s_y = randi()%int(spread)
 	
 	bullet_line.position = $ray.global_position-Vector2(0,2)
+	bullet_line.bullet_scale = 2
 	
 	$ray.add_child(smoke)
 	

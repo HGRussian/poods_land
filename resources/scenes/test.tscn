@@ -62,9 +62,10 @@ collision_use_kinematic = false
 collision_friction = 1.0
 collision_bounce = 0.0
 collision_layer = 1
-collision_mask = 1
+collision_mask = 16385
 occluder_light_mask = 1
 tile_data = PoolIntArray( -8, 0, -7, 0, -4, 0, 65528, 0, 65529, 0, 65532, 0, 131064, 0, 131065, 0, 131066, 0, 131067, 0, 131068, 0, 131069, 0, 131070, 0, 131071, 0, 65536, 0, 65537, 0, 65538, 0, 65539, 0, 65540, 0, 65541, 0, 65542, 0, 65543, 0, 65544, 0 )
+_sections_unfolded = [ "Collision", "Occluder" ]
 
 [node name="artefact" parent="." instance=ExtResource( 3 )]
 
@@ -123,8 +124,9 @@ shape = SubResource( 2 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
 
-position = Vector2( 985, 44 )
+position = Vector2( 985, 81.788 )
 rotation = -1.57079
+scale = Vector2( 0.479332, 1 )
 shape = SubResource( 2 )
 
 [node name="weapon_prop" parent="." instance=ExtResource( 4 )]
@@ -134,6 +136,11 @@ position = Vector2( -147, 54 )
 [node name="weapon_prop2" parent="." instance=ExtResource( 4 )]
 
 position = Vector2( -105, 54 )
+
+[node name="weapon_prop3" parent="." instance=ExtResource( 4 )]
+
+position = Vector2( -63, 54 )
+gun_name = "big_magnum"
 
 
 [editable path="poods"]

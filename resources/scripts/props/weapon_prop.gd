@@ -1,7 +1,7 @@
-extends Area2D
+extends RigidBody2D
 
 export var gun_name = "magnum"
-export var label_name = "Magnum"
+var label_name = ""
 
 var picked = false
 var pl_in = false
@@ -11,6 +11,7 @@ var gun_scn
 func _ready():
 	gun_scn = load("res://resources/scenes/weapons/"+gun_name+".tscn")
 	$tex.texture = load("res://resources/art/weapons/"+gun_name+"/"+gun_name+".png")
+	label_name = gun_scn.instance().label_name
 	$Label.text = label_name
 	set_process(true)
 
@@ -23,13 +24,13 @@ func _process(delta):
 		yield($anim,"animation_finished")
 		queue_free()
 
-func _on_weapon_prop_body_entered( body ):
+func _on_area_body_entered( body ):
 	if body.is_in_group("pl") and !picked:
 		$Label.show()
 		pl_in = true
 		pl_body = body
 
-func _on_weapon_prop_body_exited( body ):
+func _on_area_body_exited( body ):
 	if body.is_in_group("pl") and !picked:
 		$Label.hide()
 		pl_in = false

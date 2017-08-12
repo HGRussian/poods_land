@@ -31,7 +31,19 @@ func _process(delta):
 
 func add_weapon( weapon ):
 	var weapons = get_children()
-	if weapons.size() < 2 and weapon.instance().double_hand:
+	if weapons.size() == 0:
+		add_child(weapon.instance())
+		update_state()
+	elif weapons.size() == 1 and weapons[0].double_hand and weapon.instance().double_hand:
+		add_child(weapon.instance())
+		update_state()
+	else:
+		for i in range(weapons.size()):
+			var weapon_prop = preload("res://resources/scenes/props/weapon_prop.tscn").instance()
+			weapon_prop.gun_name = weapons[i].gun_name
+			remove_child(weapons[i])
+			weapon_prop.position = global_position
+			get_tree().get_current_scene().add_child(weapon_prop)
 		add_child(weapon.instance())
 		update_state()
 	
@@ -44,6 +56,13 @@ func update_state():
 		weapons[0].position = Vector2(-5,0)
 		weapons[1].position = Vector2(0,0)
 		weapons[1].z = -1
+	
+	if weapons.size() == 2:
+		spread_factor=1.5
+	else:
+		spread_factor=1
+	for i in weapons:
+		i.update_state()
 
 func recoil(recoil):
 	get_parent().apply_impulse(Vector2(),-Vector2(scale.x*recoil,0))

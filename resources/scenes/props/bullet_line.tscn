@@ -24,7 +24,7 @@ tracks/0/keys = {
 [node name="bullet_line" type="Sprite"]
 
 script = ExtResource( 1 )
-_sections_unfolded = [ "Offset", "Transform", "Z" ]
+_sections_unfolded = [ "Offset", "Transform" ]
 
 [node name="Timer" type="Timer" parent="."]
 
