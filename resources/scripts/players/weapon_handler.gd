@@ -51,10 +51,10 @@ func add_weapon( weapon ):
 func update_state():
 	var weapons = get_children()
 	if weapons.size() == 1:
-		weapons[0].position = Vector2(0,0)
+		weapons[0].position = Vector2(10,0)
 	elif weapons.size() > 1:
-		weapons[0].position = Vector2(-5,0)
-		weapons[1].position = Vector2(0,0)
+		weapons[0].position = Vector2(5,0)
+		weapons[1].position = Vector2(10,0)
 		weapons[1].z = -1
 	
 	if weapons.size() == 2:

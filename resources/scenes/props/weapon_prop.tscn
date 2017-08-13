@@ -159,7 +159,7 @@ gun_name = "magnum"
 
 [node name="tex" type="Sprite" parent="."]
 
-position = Vector2( 0, 1 )
+position = Vector2( 0, -3 )
 rotation = -0.523598
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Material", "Transform", "Visibility" ]

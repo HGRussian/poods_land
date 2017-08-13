@@ -1,9 +1,9 @@
-extends Sprite
+extends Node2D
 
 var label_name = "Magnum"
 var gun_name = "magnum"
 var spread = 50
-var recoil = 60
+var recoil = 100
 var reload = 0.5
 var double_hand = true
 
@@ -24,14 +24,13 @@ func shoot():
 	if $reload.get_time_left() > 0:
 		return
 	var bullet_line = bullet_line_scn.instance()
-	var smoke = smoke_scn.instance()
 	var hit_smoke = hit_smoke_scn.instance()
 	var scale_x = get_parent().scale.x
 	var s_y = randi()%int(spread)
 	
 	bullet_line.position = $ray.global_position-Vector2(0,2)
 	
-	$ray.add_child(smoke)
+	
 	
 	var distance = ($ray.get_collision_point()-$ray.global_position)
 	bullet_line.rotation = Vector2().angle_to_point(distance)+3.14
@@ -49,10 +48,14 @@ func shoot():
 		get_tree().get_current_scene().add_child(bullet_line)
 	else:
 		bullet_line.rotation = get_parent().global_rotation
-		bullet_line.rotation+= Vector2().angle_to_point($ray.cast_to)+3.14
+		bullet_line.rotation += Vector2().angle_to_point($ray.cast_to)+3.14
 		bullet_line.scale.x = 340
 		
 		get_tree().get_current_scene().add_child(bullet_line)
 	
 	get_parent().recoil(recoil)
 	$reload.start()
+
+func after_shoot ():
+	var smoke = smoke_scn.instance()
+	$'body/smoke_pos'.add_child(smoke) 

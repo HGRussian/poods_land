@@ -1,10 +1,10 @@
-extends Sprite
+extends Node2D
 
 var label_name = "Big Magnum"
 var gun_name = "big_magnum"
 var spread = 40
-var recoil = 100
-var reload = 0.4
+var recoil = 200
+var reload = 0.5
 var double_hand = false
 
 var smoke_scn = preload("res://resources/scenes/props/shoot_smoke.tscn")
@@ -25,15 +25,12 @@ func shoot():
 		return
 	
 	var bullet_line = bullet_line_scn.instance()
-	var smoke = smoke_scn.instance()
 	var hit_smoke = hit_smoke_scn.instance()
 	var scale_x = get_parent().scale.x
 	var s_y = randi()%int(spread)
 	
 	bullet_line.position = $ray.global_position-Vector2(0,2)
 	bullet_line.bullet_scale = 2
-	
-	$ray.add_child(smoke)
 	
 	var distance = ($ray.get_collision_point()-$ray.global_position)
 	bullet_line.rotation = Vector2().angle_to_point(distance)+3.14
@@ -58,3 +55,7 @@ func shoot():
 	
 	get_parent().recoil(recoil)
 	$reload.start()
+
+func after_shoot ():
+	var smoke = smoke_scn.instance()
+	$'body/smoke_pos'.add_child(smoke) 
