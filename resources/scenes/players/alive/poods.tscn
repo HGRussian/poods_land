@@ -17,7 +17,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
+"times": PoolRealArray( 1.1 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ 14 ]
@@ -293,7 +293,7 @@ _sections_unfolded = [ "Playback", "playback" ]
 texture = ExtResource( 2 )
 vframes = 4
 hframes = 4
-frame = 14
+frame = 1
 _sections_unfolded = [ "Animation", "Transform" ]
 
 [node name="hat" type="Sprite" parent="tex"]

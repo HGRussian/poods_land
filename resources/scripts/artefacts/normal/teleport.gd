@@ -12,6 +12,7 @@ var count = 0
 ### SELF VARS HERE
 var parts = preload("res://resources/scenes/props/particles.tscn")
 var check = preload("res://resources/scenes/props/check.tscn")
+var tp_dis_sprite = preload("res://resources/scenes/props/teleport_dissolution.tscn")
 var ray
 var timer
 var tele_range = 96
@@ -29,19 +30,31 @@ func ch_params( who ):
 func teleport( side ,who): # true - right, false - left
 	if side:
 		if $check.get_overlapping_bodies().size() == 0:
+			var poof = tp_dis_sprite.instance()
+			poof.position = who.position
+			who.get_parent().add_child(poof)
 			var effect = parts.instance()
 			who.add_child(effect)
 			who.position.x+=tele_range
 		else:
+			var poof = tp_dis_sprite.instance()
+			poof.position = who.position
+			who.get_parent().add_child(poof)
 			var effect = parts.instance()
 			who.add_child(effect)
 			who.position.x-= who.position.x-$ray.get_collision_point().x+8
 	else:
 		if $check.get_overlapping_bodies().size() == 0:
+			var poof = tp_dis_sprite.instance()
+			poof.position = who.position
+			who.get_parent().add_child(poof)
 			var effect = parts.instance()
 			who.add_child(effect)
 			who.position.x-=tele_range
 		else:
+			var poof = tp_dis_sprite.instance()
+			poof.position = who.position
+			who.get_parent().add_child(poof)
 			var effect = parts.instance()
 			who.add_child(effect)
 			who.position.x-= who.position.x-$ray.get_collision_point().x-8

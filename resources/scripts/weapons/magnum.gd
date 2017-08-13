@@ -28,7 +28,7 @@ func shoot():
 	var scale_x = get_parent().scale.x
 	var s_y = randi()%int(spread)
 	
-	bullet_line.position = $ray.global_position-Vector2(0,2)
+	bullet_line.position = $ray.global_position
 	
 	
 	
@@ -59,3 +59,6 @@ func shoot():
 func after_shoot ():
 	var smoke = smoke_scn.instance()
 	$'body/smoke_pos'.add_child(smoke) 
+
+func rand_fire(count):
+	$'fire_sprite'.frame = randi()%count

@@ -1,7 +1,5 @@
 config_version=3
 
-config_version=null
-
 [application]
 
 config/name="poods_land"
@@ -32,9 +30,15 @@ pick=[ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","
 shoot=[ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777221,"unicode":0,"echo":false,"script":null)
  ]
 
+[node]
+
+name_num_separator=2
+name_casing=2
+
 [rendering]
 
 quality/intended_usage/framebuffer_allocation=0
 quality/2d/use_pixel_snap=true
 threads/thread_model=2
+environment/default_clear_color=Color( 0.25, 0.25, 0.25, 1 )
 environment/default_environment="res://default_env.tres"

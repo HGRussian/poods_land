@@ -23,6 +23,10 @@ extents = Vector2( 69.576, 10 )
 
 position = Vector2( 6, -174 )
 
+[node name="anim" parent="poods"]
+
+blend_times = [ "brake", "fall", 0.5, "fall", "brake", 0.2, "fall", "fall", 0.2, "fall", "idle", 0.2, "fall", "jump", 0.2, "fall", "sprint", 0.2, "fall", "stick", 0.2, "fall", "walk", 0.2, "idle", "fall", 0.5, "jump", "fall", 0.5, "sprint", "fall", 0.5, "stick", "fall", 0.5, "walk", "fall", 0.5 ]
+
 [node name="Camera2D" type="Camera2D" parent="poods"]
 
 anchor_mode = 1
