@@ -60,28 +60,6 @@ tracks/3/keys = {
 "update": 0,
 "values": [ -57.526, 11.6542, 0.0 ]
 }
-tracks/4/type = "value"
-tracks/4/path = NodePath("body/hand_2:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 9.81754, 7.97595 ), Vector2( 9.99585, -1.04066 ) ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("body/hand_2:rotation_deg")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 48.3336, 0.0 ]
-}
 
 [sub_resource type="Animation" id=1]
 
@@ -276,7 +254,7 @@ position = Vector2( 12, -2 )
 
 [node name="fire_part" type="Particles2D" parent="body/smoke_pos"]
 
-emitting = true
+emitting = false
 amount = 16
 lifetime = 1.0
 one_shot = false
@@ -300,11 +278,5 @@ _sections_unfolded = [ "Drawing", "Process Material", "Visibility" ]
 
 position = Vector2( 3, 0 )
 texture = ExtResource( 9 )
-
-[node name="hand_2" type="Sprite" parent="body"]
-
-position = Vector2( 9.99585, -1.04066 )
-texture = ExtResource( 9 )
-_sections_unfolded = [ "Transform" ]
 
 

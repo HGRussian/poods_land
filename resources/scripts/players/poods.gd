@@ -44,18 +44,18 @@ func _fixed_process(delta):
 	#process mirroring
 	if move_left:
 		$tex.flip_h=true
-		$'tex/hat'.flip_h=true
+#		$'tex/hat'.flip_h=true
 		scl=-1
 		if wallslide_time > 0 and !det_down.is_colliding():
 			$tex.flip_h=false
-			$'tex/hat'.flip_h=false
+#			$'tex/hat'.flip_h=false
 	elif move_right:
 		$tex.flip_h=false
-		$'tex/hat'.flip_h=false
+#		$'tex/hat'.flip_h=false
 		scl=1
 		if wallslide_time > 0 and !det_down.is_colliding():
 			$tex.flip_h=true
-			$'tex/hat'.flip_h=true
+#			$'tex/hat'.flip_h=true
 
 	# processing floor 
 	if det_down.is_colliding():
@@ -166,7 +166,9 @@ func _fixed_process(delta):
 	rotation = rot
 
 func set_anim(anim):
+	
 	if canim != anim:
+		print (anim)
 		$anim.play(anim)
 		canim = anim
 
