@@ -215,7 +215,7 @@ _sections_unfolded = [ "Playback", "playback" ]
 texture = ExtResource( 2 )
 vframes = 4
 hframes = 4
-frame = 9
+frame = 7
 _sections_unfolded = [ "Animation", "Transform" ]
 
 [node name="col_grnd" type="CollisionShape2D" parent="."]

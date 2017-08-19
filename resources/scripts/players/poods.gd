@@ -168,9 +168,8 @@ func _fixed_process(delta):
 func set_anim(anim):
 	
 	if canim != anim:
-		print (anim)
-		$anim.play(anim)
 		canim = anim
+		$anim.play(anim)
 
 func _ready():
 	set_fixed_process(true)
