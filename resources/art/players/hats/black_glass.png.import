@@ -2,7 +2,7 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/hat-003.png-877fcaa34f27a97a657162fb8a631328.stex"
+path="res://.import/black_glass.png-22a52d6fcbeb417a6884ae8b51665659.stex"
 
 [params]
 
@@ -20,4 +20,4 @@ process/premult_alpha=false
 process/HDR_as_SRGB=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false

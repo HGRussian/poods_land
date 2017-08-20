@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://resources/scenes/players/alive/poods.tscn" type="PackedScene" id=1]
-[ext_resource path="res://resources/tilemaps/green_heaven.tres" type="TileSet" id=2]
-[ext_resource path="res://resources/scenes/props/artefact.tscn" type="PackedScene" id=3]
-[ext_resource path="res://resources/scenes/props/weapon_prop.tscn" type="PackedScene" id=4]
+[ext_resource path="res://resources/art/players/hands/poods_001.png" type="Texture" id=2]
+[ext_resource path="res://resources/tilemaps/green_heaven.tres" type="TileSet" id=3]
+[ext_resource path="res://resources/scenes/props/artefact.tscn" type="PackedScene" id=4]
+[ext_resource path="res://resources/scenes/props/weapon_prop.tscn" type="PackedScene" id=5]
+[ext_resource path="res://resources/scenes/debug.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -26,6 +28,10 @@ position = Vector2( -44, -365 )
 [node name="anim" parent="poods"]
 
 blend_times = [ "brake", "fall", 0.5, "fall", "brake", 0.2, "fall", "fall", 0.2, "fall", "idle", 0.2, "fall", "jump", 0.2, "fall", "sprint", 0.2, "fall", "stick", 0.2, "fall", "walk", 0.2, "idle", "fall", 0.5, "jump", "fall", 0.5, "sprint", "fall", 0.5, "stick", "fall", 0.5, "walk", "fall", 0.5 ]
+
+[node name="hat" parent="poods/tex"]
+
+texture = ExtResource( 2 )
 
 [node name="Camera2D" type="Camera2D" parent="poods"]
 
@@ -55,7 +61,7 @@ _sections_unfolded = [ "Smoothing" ]
 
 position = Vector2( -15, 0 )
 mode = 0
-tile_set = ExtResource( 2 )
+tile_set = ExtResource( 3 )
 cell_size = Vector2( 64, 64 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -71,37 +77,37 @@ occluder_light_mask = 1
 tile_data = PoolIntArray( -262147, 2, -262146, 2, -262145, 2, -196611, 2, -196610, 2, -196609, 2, -131071, 30, -8, 23, -7, 25, -4, 29, 65528, 16, 65529, 17, 65532, 21, 131064, 16, 131065, 4, 131066, 19, 131067, 19, 131068, 15, 131069, 19, 131070, 19, 131071, 19, 65536, 20, 65537, 20, 65538, 20, 65539, 20, 65540, 20, 65541, 20, 65542, 20, 65543, 20, 65544, 27, 196600, 22, 196601, 18, 196602, 18, 196603, 18, 196604, 18, 196605, 18, 196606, 18, 196607, 24 )
 _sections_unfolded = [ "Collision", "Occluder" ]
 
-[node name="artefact" parent="." instance=ExtResource( 3 )]
+[node name="artefact" parent="." instance=ExtResource( 4 )]
 
 position = Vector2( 178, 70 )
 force_rarity = "junk"
 
-[node name="artefact2" parent="." instance=ExtResource( 3 )]
+[node name="artefact2" parent="." instance=ExtResource( 4 )]
 
 position = Vector2( 226, 70 )
 force_rarity = "basic"
 
-[node name="artefact3" parent="." instance=ExtResource( 3 )]
+[node name="artefact3" parent="." instance=ExtResource( 4 )]
 
 position = Vector2( 274, 70 )
 force_rarity = "normal"
 
-[node name="artefact4" parent="." instance=ExtResource( 3 )]
+[node name="artefact4" parent="." instance=ExtResource( 4 )]
 
 position = Vector2( 322, 70 )
 force_rarity = "rare"
 
-[node name="artefact5" parent="." instance=ExtResource( 3 )]
+[node name="artefact5" parent="." instance=ExtResource( 4 )]
 
 position = Vector2( 370, 70 )
 force_rarity = "ultra"
 
-[node name="artefact6" parent="." instance=ExtResource( 3 )]
+[node name="artefact6" parent="." instance=ExtResource( 4 )]
 
 position = Vector2( 418, 70 )
 force_rarity = "legendary"
 
-[node name="artefact7" parent="." instance=ExtResource( 3 )]
+[node name="artefact7" parent="." instance=ExtResource( 4 )]
 
 position = Vector2( 466, 70 )
 
@@ -133,18 +139,20 @@ rotation = -1.57079
 scale = Vector2( 0.479332, 1 )
 shape = SubResource( 2 )
 
-[node name="weapon_prop" parent="." instance=ExtResource( 4 )]
+[node name="weapon_prop" parent="." instance=ExtResource( 5 )]
 
 position = Vector2( -147, 54 )
 
-[node name="weapon_prop2" parent="." instance=ExtResource( 4 )]
+[node name="weapon_prop2" parent="." instance=ExtResource( 5 )]
 
 position = Vector2( -105, 54 )
 
-[node name="weapon_prop3" parent="." instance=ExtResource( 4 )]
+[node name="weapon_prop3" parent="." instance=ExtResource( 5 )]
 
 position = Vector2( -63, 54 )
 gun_name = "big_magnum"
+
+[node name="debug" parent="." instance=ExtResource( 6 )]
 
 
 [editable path="poods"]

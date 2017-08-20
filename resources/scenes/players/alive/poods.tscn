@@ -2,7 +2,7 @@
 
 [ext_resource path="res://resources/scripts/players/poods.gd" type="Script" id=1]
 [ext_resource path="res://resources/art/players/mini_poods.png" type="Texture" id=2]
-[ext_resource path="res://resources/art/players/hats/hat-002.png" type="Texture" id=3]
+[ext_resource path="res://resources/art/players/hats/cowboy.png" type="Texture" id=3]
 [ext_resource path="res://resources/scripts/players/weapon_handler.gd" type="Script" id=4]
 
 [sub_resource type="Animation" id=1]
@@ -288,11 +288,12 @@ _sections_unfolded = [ "Playback", "playback" ]
 texture = ExtResource( 2 )
 vframes = 4
 hframes = 4
-frame = 1
+frame = 7
 _sections_unfolded = [ "Animation", "Transform" ]
 
 [node name="hat" type="Sprite" parent="tex"]
 
+position = Vector2( 0, -5 )
 texture = ExtResource( 3 )
 offset = Vector2( 0, -5 )
 _sections_unfolded = [ "Offset" ]

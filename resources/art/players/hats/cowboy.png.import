@@ -2,7 +2,7 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/hat-002.png-d8a5cd3b714146e70a6b702d15a3243c.stex"
+path="res://.import/cowboy.png-522d248dbc436934f9fcee28a45c7959.stex"
 
 [params]
 
@@ -20,4 +20,4 @@ process/premult_alpha=false
 process/HDR_as_SRGB=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
