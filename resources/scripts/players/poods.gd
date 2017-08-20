@@ -44,18 +44,18 @@ func _fixed_process(delta):
 	#process mirroring
 	if move_left:
 		$tex.flip_h=true
-#		$'tex/hat'.flip_h=true
+		$'tex/hat'.flip_h=true
 		scl=-1
 		if wallslide_time > 0 and !det_down.is_colliding():
 			$tex.flip_h=false
-#			$'tex/hat'.flip_h=false
+			$'tex/hat'.flip_h=false
 	elif move_right:
 		$tex.flip_h=false
-#		$'tex/hat'.flip_h=false
+		$'tex/hat'.flip_h=false
 		scl=1
 		if wallslide_time > 0 and !det_down.is_colliding():
 			$tex.flip_h=true
-#			$'tex/hat'.flip_h=true
+			$'tex/hat'.flip_h=true
 
 	# processing floor 
 	if det_down.is_colliding():
@@ -75,7 +75,8 @@ func _fixed_process(delta):
 		else:
 			set_anim("idle")
 		var normal = det_down.get_collision_normal()
-		if abs(rot) < 0.8 or move_sprint:
+		if abs(normal.angle()+ deg2rad(90)) < 0.4 or move_sprint:
+#		if abs(rot) < 0.8 or move_sprint:
 			rot_target = normal.angle() + deg2rad(90)
 		else:
 			rot_target = 0

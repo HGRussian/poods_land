@@ -21,7 +21,7 @@ extents = Vector2( 69.576, 10 )
 "pl",
 ] instance=ExtResource( 1 )]
 
-position = Vector2( 6, -174 )
+position = Vector2( -44, -365 )
 
 [node name="anim" parent="poods"]
 
