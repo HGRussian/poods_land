@@ -15,11 +15,35 @@ func _ready():
 	randomize()
 	boxes = gen()
 	meta = gen_meta(boxes)
+	print(meta)
 	update()
 
 func gen_meta(gen_boxes):
-	pass
-
+	var meta = []
+	for i in range(gen_boxes.size()):
+		if i < nodes:
+			if i == 0:
+				meta.append("start")
+			elif i == nodes-1:
+				meta.append("end")
+			elif i == nodes/2:
+				meta.append("checkpoint")
+			elif randi()%(nodes/2) == 0:
+				meta.append("art_room")
+			else:
+				meta.append("keyroom")
+		elif i < nodes+second_nodes:
+			if randi()%(second_nodes/4) == 0:
+				meta.append("art_room")
+			else:
+				meta.append("secondroom")
+		elif i < nodes+second_nodes+third_nodes:
+			if randi()%(third_nodes/2) == 0:
+				meta.append("art_room")
+			else:
+				meta.append("thirdroom")
+	return meta
+	
 func gen():
 	var gen_boxes = [Vector2(0,0)]
 	var box_size = Vector2(BOX_W,BOX_H)

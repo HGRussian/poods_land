@@ -103,7 +103,7 @@ func _fixed_process(delta):
 			linear_damp = -1
 			lin_vec.x+=SPEED*WALL_JUMP_FACTOR
 			linear_velocity.y=-jump_speed
-		if move_right and wallslide_time > STICKINESS and !det_down.is_colliding() and !move_jump: lin_vec.x+=SPEED
+		if move_right and wallslide_time > STICKINESS and !move_jump: lin_vec.x+=SPEED
 		if move_left:
 			linear_damp = SLIDE_FACTOR
 			if move_jump:
@@ -125,7 +125,7 @@ func _fixed_process(delta):
 			linear_damp = -1
 			lin_vec.x-=SPEED*WALL_JUMP_FACTOR
 			linear_velocity.y=-jump_speed
-		if move_left and wallslide_time > STICKINESS and !det_down.is_colliding() and !move_jump: lin_vec.x-=SPEED
+		if move_left and wallslide_time > STICKINESS and !move_jump: lin_vec.x-=SPEED
 		if move_right:
 			linear_damp = SLIDE_FACTOR
 			if move_jump:
