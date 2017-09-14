@@ -11,12 +11,13 @@ var distance_rand = 16
 var boxes
 var meta 
 
+var island = preload("res://resources/scenes/generators/green_zone_room.tscn")
+
 func _ready():
 	randomize()
 	boxes = gen()
 	meta = gen_meta(boxes)
-	print(meta)
-	update()
+	place(boxes,meta)
 
 func gen_meta(gen_boxes):
 	var meta = []
@@ -34,12 +35,12 @@ func gen_meta(gen_boxes):
 				meta.append("keyroom")
 		elif i < nodes+second_nodes:
 			if randi()%(second_nodes/4) == 0:
-				meta.append("art_room")
+				meta.append("artroom")
 			else:
 				meta.append("secondroom")
 		elif i < nodes+second_nodes+third_nodes:
 			if randi()%(third_nodes/2) == 0:
-				meta.append("art_room")
+				meta.append("artroom")
 			else:
 				meta.append("thirdroom")
 	return meta
@@ -79,14 +80,28 @@ func check_intersect(gen_boxes, box):
 			place = false
 	return place
 
-func _draw():
-	var box = Vector2(BOX_W,BOX_H)
-	var count = 0
-	for i in boxes:
-		count+=1
-		if count <= nodes:
-			draw_rect(Rect2(i,box),Color(1,0,0))
-		elif count <= second_nodes+nodes:
-			draw_rect(Rect2(i,box),Color(1,1,0))
+func place(boxes,meta):
+	for i in boxes.size():
+		var a = island.instance()
+		a.set_name(meta[i])
+		if meta[i] == "secondroom":
+			a.len = 24
+		elif meta[i] == "thirdroom":
+			a.len = 16
 		else:
-			draw_rect(Rect2(i,box),Color(1,1,1))
+			a.len = 32
+		a.nodes = randi()%4+3
+		a.position = boxes[i]*32
+		add_child(a)
+
+#func _draw():
+#	var box = Vector2(BOX_W,BOX_H)
+#	var count = 0
+#	for i in boxes:
+#		count+=1
+#		if count <= nodes:
+#			draw_rect(Rect2(i,box),Color(1,0,0))
+#		elif count <= second_nodes+nodes:
+#			draw_rect(Rect2(i,box),Color(1,1,0))
+#		else:
+#			draw_rect(Rect2(i,box),Color(1,1,1))

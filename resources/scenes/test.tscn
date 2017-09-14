@@ -59,10 +59,9 @@ _sections_unfolded = [ "Smoothing" ]
 
 [node name="TileMap" type="TileMap" parent="."]
 
-position = Vector2( -15, 0 )
 mode = 0
 tile_set = ExtResource( 3 )
-cell_size = Vector2( 64, 64 )
+cell_size = Vector2( 32, 32 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 cell_half_offset = 2
@@ -74,42 +73,42 @@ collision_bounce = 0.0
 collision_layer = 1
 collision_mask = 16385
 occluder_light_mask = 1
-tile_data = PoolIntArray( -262147, 2, -262146, 2, -262145, 2, -196611, 2, -196610, 2, -196609, 2, -131071, 30, -8, 23, -7, 25, -4, 29, 65528, 16, 65529, 17, 65532, 21, 131064, 16, 131065, 4, 131066, 19, 131067, 19, 131068, 15, 131069, 19, 131070, 19, 131071, 19, 65536, 20, 65537, 20, 65538, 20, 65539, 20, 65540, 20, 65541, 20, 65542, 20, 65543, 20, 65544, 27, 196600, 22, 196601, 18, 196602, 18, 196603, 18, 196604, 18, 196605, 18, 196606, 18, 196607, 24 )
-_sections_unfolded = [ "Collision", "Occluder" ]
+tile_data = PoolIntArray( -131070, 45, -131069, 42, -65534, 17, -65533, 18, 2, 17, 3, 14, 65538, 17, 65539, 14, 196601, 45, 196602, 10, 196603, 10, 196604, 10, 196605, 10, 196606, 10, 196607, 10, 131072, 27, 131073, 10, 131074, 29, 131075, 26, 131076, 10, 131077, 10, 131078, 10, 131079, 10, 131080, 10, 131081, 10, 131082, 10, 131083, 10, 131084, 10, 131085, 10, 131086, 10, 131087, 10, 131088, 42, 262137, 49, 262138, 5, 262139, 5, 262140, 5, 262141, 5, 262142, 5, 262143, 5, 196608, 5, 196609, 5, 196610, 5, 196611, 5, 196612, 5, 196613, 5, 196614, 5, 196615, 5, 196616, 5, 196617, 5, 196618, 5, 196619, 5, 196620, 5, 196621, 5, 196622, 5, 196623, 5, 196624, 38 )
+_sections_unfolded = [ "Cell", "Collision", "Occluder", "Transform" ]
 
 [node name="artefact" parent="." instance=ExtResource( 4 )]
 
-position = Vector2( 178, 70 )
+position = Vector2( 178, 65 )
 force_rarity = "junk"
 
 [node name="artefact2" parent="." instance=ExtResource( 4 )]
 
-position = Vector2( 226, 70 )
+position = Vector2( 226, 65 )
 force_rarity = "basic"
 
 [node name="artefact3" parent="." instance=ExtResource( 4 )]
 
-position = Vector2( 274, 70 )
+position = Vector2( 274, 65 )
 force_rarity = "normal"
 
 [node name="artefact4" parent="." instance=ExtResource( 4 )]
 
-position = Vector2( 322, 70 )
+position = Vector2( 322, 65 )
 force_rarity = "rare"
 
 [node name="artefact5" parent="." instance=ExtResource( 4 )]
 
-position = Vector2( 370, 70 )
+position = Vector2( 370, 65 )
 force_rarity = "ultra"
 
 [node name="artefact6" parent="." instance=ExtResource( 4 )]
 
-position = Vector2( 418, 70 )
+position = Vector2( 418, 65 )
 force_rarity = "legendary"
 
 [node name="artefact7" parent="." instance=ExtResource( 4 )]
 
-position = Vector2( 466, 70 )
+position = Vector2( 466, 65 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
