@@ -68,7 +68,7 @@ func _ready():
 	if type == "artroom":
 		var a = preload("res://resources/scenes/props/artefact.tscn")
 		a = a.instance()
-		a.position.x = len/2*32
+		a.position.x = len/2*32+16
 		a.position.y = y_place
 		$pivot.add_child(a)
 	

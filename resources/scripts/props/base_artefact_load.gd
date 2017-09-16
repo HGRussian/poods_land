@@ -1,6 +1,7 @@
 extends Sprite
 
 var force_rarity = "random"
+var force_item = "random"
 var rarity 
 
 func art_load():
@@ -10,7 +11,11 @@ func art_load():
 	else:
 		rarity = force_rarity
 	var arts = list_files_in_directory("res://resources/scripts/artefacts/"+rarity)
-	var art_script = load("res://resources/scripts/artefacts/"+rarity+"/"+arts[randi()%arts.size()])
+	var art_script
+	if force_item == "random":
+		art_script = load("res://resources/scripts/artefacts/"+rarity+"/"+arts[randi()%arts.size()])
+	else:
+		art_script = load("res://resources/scripts/artefacts/"+rarity+"/"+force_item+".gd")
 	set_script(art_script)
 
 func rarity():

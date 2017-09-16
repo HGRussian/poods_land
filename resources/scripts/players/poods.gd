@@ -14,7 +14,7 @@ var SPRINT_JUMP = 450
 var WALL_JUMP_FACTOR = 10
 var ACC_FACTOR = 15
 var SLIDE_FACTOR = 10
-var JUMPS = 2
+var JUMPS = 1
 var STICKINESS = 0.3 # seconds
 
 # some useful vars
@@ -139,14 +139,13 @@ func _fixed_process(delta):
 		wallslide_time = 0
 		linear_damp = -1
 		if onair_time > 0 and abs(int(linear_velocity.y)) == 0:
-			linear_velocity.y = 100
+			linear_velocity.y = 25
 		elif move_sprint and !wallslide_time > 0:
 			jump_speed = SPRINT_JUMP
 			if abs(linear_velocity.x) > 25:
 				friction = 0.1
 			else:
 				friction = 1
-			
 			if move_left: lin_vec.x-=SPRINT_SPEED
 			if move_right: lin_vec.x+=SPRINT_SPEED
 		else:
@@ -168,7 +167,6 @@ func _fixed_process(delta):
 	# rotate poods
 	rot = lerp(rot,rot_target,delta*25)
 	rotation = rot
-
 func set_anim(anim):
 	
 	if canim != anim:

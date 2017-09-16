@@ -27,6 +27,7 @@ func ch_params( who ):
 	cooldown*=0.8
 ### END
 
+
 func teleport( side ,who): # true - right, false - left
 	if side:
 		if $check.get_overlapping_bodies().size() == 0:

@@ -1,12 +1,14 @@
 extends Area2D
 
 export(String, "junk", "basic", "normal", "rare", "ultra", "legendary", "random") var force_rarity = "random"
+export var force_item = "random"
 var picked = false
 var pl_in = false
 var pl_body
 
 func _ready():
 	$artefact.force_rarity = force_rarity
+	$artefact.force_item = force_item
 	$artefact.art_load()
 	set_process(true)
 
