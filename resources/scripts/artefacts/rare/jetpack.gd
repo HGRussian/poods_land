@@ -58,6 +58,7 @@ func _process(delta):
 		else:
 			jet_set_anim("idle")
 			jet_node.get_node("smoke").emitting = false
+			jet_node.get_node("smoke_2").emitting = false
 
 ### END
 
