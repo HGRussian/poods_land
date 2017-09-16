@@ -23,7 +23,12 @@ extents = Vector2( 69.576, 10 )
 "pl",
 ] instance=ExtResource( 1 )]
 
+editor/display_folded = true
 position = Vector2( -44, -365 )
+
+[node name="detectors" parent="poods"]
+
+editor/display_folded = true
 
 [node name="anim" parent="poods"]
 
@@ -112,6 +117,7 @@ position = Vector2( 466, 65 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
+editor/display_folded = true
 input_pickable = false
 collision_layer = 1
 collision_mask = 1

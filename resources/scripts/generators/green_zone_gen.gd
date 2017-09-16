@@ -1,13 +1,13 @@
 extends Node2D
 
-const BOX_W = 32
-const BOX_H = 24
+const BOX_W = 18
+const BOX_H = 9
 
-var nodes = 6
+var nodes = 7
 var second_nodes = 8
 var third_nodes = 8
-var distance = 36
-var distance_rand = 16
+var distance = 24
+var distance_rand = 8
 var boxes
 var meta 
 
@@ -30,7 +30,7 @@ func gen_meta(gen_boxes):
 			elif i == nodes/2:
 				meta.append("checkpoint")
 			elif randi()%(nodes/2) == 0:
-				meta.append("art_room")
+				meta.append("artroom")
 			else:
 				meta.append("keyroom")
 		elif i < nodes+second_nodes:
@@ -83,25 +83,8 @@ func check_intersect(gen_boxes, box):
 func place(boxes,meta):
 	for i in boxes.size():
 		var a = island.instance()
-		a.set_name(meta[i])
-		if meta[i] == "secondroom":
-			a.len = 24
-		elif meta[i] == "thirdroom":
-			a.len = 16
-		else:
-			a.len = 32
+		a.set_name(meta[i]+str(i))
+		a.type = meta[i]
 		a.nodes = randi()%4+3
 		a.position = boxes[i]*32
 		add_child(a)
-
-#func _draw():
-#	var box = Vector2(BOX_W,BOX_H)
-#	var count = 0
-#	for i in boxes:
-#		count+=1
-#		if count <= nodes:
-#			draw_rect(Rect2(i,box),Color(1,0,0))
-#		elif count <= second_nodes+nodes:
-#			draw_rect(Rect2(i,box),Color(1,1,0))
-#		else:
-#			draw_rect(Rect2(i,box),Color(1,1,1))

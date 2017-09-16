@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://resources/scenes/test_with_gen.gd" type="Script" id=1]
+[ext_resource path="res://resources/scenes/players/alive/poods.tscn" type="PackedScene" id=2]
+[ext_resource path="res://resources/scenes/debug.tscn" type="PackedScene" id=3]
+[ext_resource path="res://resources/scenes/generators/green_zone_gen.tscn" type="PackedScene" id=4]
+
+[node name="test_with_gen" type="Node2D"]
+
+script = ExtResource( 1 )
+
+[node name="poods" parent="." groups=[
+"pl",
+] instance=ExtResource( 2 )]
+
+[node name="camera_2d" type="Camera2D" parent="poods"]
+
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 10, 10 )
+limit_left = -10000000
+limit_top = -10000000
+limit_right = 10000000
+limit_bottom = 10000000
+limit_smoothed = false
+drag_margin_h_enabled = false
+drag_margin_v_enabled = false
+smoothing_enabled = true
+smoothing_speed = 5.0
+drag_margin_left = 0.2
+drag_margin_top = 0.2
+drag_margin_right = 0.2
+drag_margin_bottom = 0.2
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = false
+
+[node name="debug" parent="." instance=ExtResource( 3 )]
+
+[node name="green_zone_gen" parent="." instance=ExtResource( 4 )]
+
+

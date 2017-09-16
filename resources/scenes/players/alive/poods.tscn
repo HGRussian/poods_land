@@ -243,7 +243,7 @@ _sections_unfolded = [ "Angular", "Linear", "Pickable" ]
 
 enabled = true
 exclude_parent = true
-cast_to = Vector2( 0, 16 )
+cast_to = Vector2( 0, 18 )
 collision_layer = 1
 type_mask = 1
 
@@ -252,7 +252,7 @@ type_mask = 1
 position = Vector2( 0, 4 )
 enabled = true
 exclude_parent = true
-cast_to = Vector2( -10, 0 )
+cast_to = Vector2( -12, 0 )
 collision_layer = 1
 type_mask = 1
 
@@ -261,7 +261,7 @@ type_mask = 1
 position = Vector2( 0, 4 )
 enabled = true
 exclude_parent = true
-cast_to = Vector2( 10, 0 )
+cast_to = Vector2( 12, 0 )
 collision_layer = 1
 type_mask = 1
 

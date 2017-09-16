@@ -1,7 +1,12 @@
 extends Node2D
 
-var nodes = 6
-var len = 32
+var nodes = 4
+var len = 16
+var type = ""
+
+var is_art = false
+
+var y_place
 
 func gen():
 	for i in nodes+1:
@@ -14,6 +19,14 @@ func gen():
 			circle(x-1+randi()%2,-j/4,radius-j/2)
 		for j in radius*1.5:
 			circle(x,j,clamp(7-j,2,999))
+	var t = get_node("pivot/tile_map")
+	for i in len+8:
+		for j in len:
+			var x = i-4
+			var y = j-len/2
+			if t.get_cell(x,y) > -1:
+				if t.get_cell(x,y-1) == -1:
+					t.set_cell(x,y,11)
 	
 	
 
@@ -40,4 +53,23 @@ func circle(x0, y0, r):
 func _ready():
 	randomize()
 	$animation_player.set_speed_scale(clamp(randf(),0.2,1))
+	if type == "secondroom":
+		len = 12
+		nodes = 3
+	elif type == "thirdroom":
+		len = 12
+		nodes = 2
 	gen()
+	y_place = 0
+	for i in range(0,32):
+			if get_node("pivot/tile_map").get_cell(len/2,-i) == -1:
+				y_place = -i*32+32
+				break
+	if type == "artroom":
+		var a = preload("res://resources/scenes/props/artefact.tscn")
+		a = a.instance()
+		a.position.x = len/2*32
+		a.position.y = y_place
+		$pivot.add_child(a)
+	
+	

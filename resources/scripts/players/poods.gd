@@ -14,7 +14,7 @@ var SPRINT_JUMP = 450
 var WALL_JUMP_FACTOR = 10
 var ACC_FACTOR = 15
 var SLIDE_FACTOR = 10
-var JUMPS = 1
+var JUMPS = 2
 var STICKINESS = 0.3 # seconds
 
 # some useful vars
@@ -93,7 +93,7 @@ func _fixed_process(delta):
 			set_anim("jump")
 
 	# processing walls
-	if det_left.is_colliding() and !det_down.is_colliding():
+	if det_left.is_colliding():
 	# left wall
 		wallslide_time+=delta
 		var normal = det_left.get_collision_normal()
@@ -112,7 +112,7 @@ func _fixed_process(delta):
 			linear_damp = -1
 		cjumps = 1
 		onair_time = 0
-	elif det_right.is_colliding() and !det_down.is_colliding():
+	elif det_right.is_colliding():
 	# right wall
 		wallslide_time+=delta
 		var normal = det_right.get_collision_normal()
@@ -138,12 +138,15 @@ func _fixed_process(delta):
 	# on_floor controll 
 		wallslide_time = 0
 		linear_damp = -1
-		if move_sprint and !wallslide_time > 0:
+		if onair_time > 0 and abs(int(linear_velocity.y)) == 0:
+			linear_velocity.y = 100
+		elif move_sprint and !wallslide_time > 0:
 			jump_speed = SPRINT_JUMP
 			if abs(linear_velocity.x) > 25:
 				friction = 0.1
 			else:
 				friction = 1
+			
 			if move_left: lin_vec.x-=SPRINT_SPEED
 			if move_right: lin_vec.x+=SPRINT_SPEED
 		else:
@@ -152,6 +155,7 @@ func _fixed_process(delta):
 				friction = 0
 			else:
 				friction = 1
+			
 			if move_left: lin_vec.x-=SPEED
 			if move_right: lin_vec.x+=SPEED
 		if move_jump:
@@ -159,7 +163,6 @@ func _fixed_process(delta):
 				linear_velocity=Vector2(0,-jump_speed).rotated(rot_target)
 				cjumps+=1
 		# target normal
-
 	# put cooked x lin_vec!
 	linear_velocity.x=lerp(linear_velocity.x,lin_vec.x,delta*ACC_FACTOR)
 	# rotate poods
