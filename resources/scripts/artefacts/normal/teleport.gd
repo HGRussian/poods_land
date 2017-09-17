@@ -63,6 +63,7 @@ func teleport( side ,who): # true - right, false - left
 func _process(delta):
 	var who = get_node("../..")
 ### HANDLING PROCESS
+	who.get_node("../UI").set_counter(["Teleport",int((1-$timer.get_time_left())*10),cooldown*10])
 	$ray.global_rotation = 0
 	$check.global_rotation = 0
 	if who.get_node("tex").flip_h:

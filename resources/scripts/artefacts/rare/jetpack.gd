@@ -27,6 +27,8 @@ func ch_params( who ):
 func _process(delta):
 	var who = get_node("../..")
 ### HANDLING PROCESS
+	who.get_node("../UI").set_counter(["Jetpack",int(fuel),max_fuel])
+
 	if who.get_node("tex").flip_h:
 		who.get_node("jetpack").scale.x = -1
 		who.get_node("jetpack").position.x = 6
@@ -49,8 +51,6 @@ func _process(delta):
 		who.linear_velocity.y = lerp(who.linear_velocity.y,-300,5*delta)
 		fuel-=delta*50
 	else:
-		if fuel < max_fuel:
-			fuel+=delta*25
 		if who.onair_time == 0:
 			pop = false
 		elif fuel < 1:
@@ -59,7 +59,8 @@ func _process(delta):
 			jet_set_anim("idle")
 			jet_node.get_node("smoke").emitting = false
 			jet_node.get_node("smoke_2").emitting = false
-
+	if fuel < max_fuel:
+		fuel+=delta*10
 ### END
 
 func jet_set_anim(anim):
