@@ -35,30 +35,35 @@ func _process(delta):
 	else:
 		who.get_node("jetpack").scale.x = 1
 		who.get_node("jetpack").position.x = -6
+	
 	if jet_node.get_node("anim").get_current_animation() == "init" and jet_node.get_node("anim").is_playing():
 		return
 	
-	if Input.is_action_just_pressed("move_jump"):
-		jet_set_anim("start")
-		jet_node.get_node("smoke").emitting = true
-	if who.onair_time > 0.2 and !pop and who.cjumps == who.JUMPS:
+	if who.onair_time > 0.2*who.JUMPS and who.cjumps == who.JUMPS:
 		if Input.is_action_just_pressed("move_jump"):
-			pop = true
 			jet_set_anim("start")
-	elif pop and Input.is_action_pressed("move_jump") and fuel > 0:
-		if jet_node.get_node("anim").get_current_animation() == "start" and !jet_node.get_node("anim").is_playing():
-			jet_set_anim("fire")
-		who.linear_velocity.y = lerp(who.linear_velocity.y,-300,5*delta)
-		fuel-=delta*50
-	else:
-		if who.onair_time == 0:
-			pop = false
-		elif fuel < 1:
-			jet_set_anim("fire")
+			jet_node.get_node("smoke").emitting = true
+			jet_node.get_node("smoke_2").emitting = true
+		if Input.is_action_pressed("move_jump") and fuel > 0:
+			if jet_node.get_node("anim").get_current_animation() == "start" and !jet_node.get_node("anim").is_playing():
+				jet_set_anim("fire")
+			who.linear_velocity.y = lerp(who.linear_velocity.y,-300,5*delta)
+			fuel-=delta*50
 		else:
-			jet_set_anim("idle")
-			jet_node.get_node("smoke").emitting = false
-			jet_node.get_node("smoke_2").emitting = false
+			if fuel < 1:
+				if int(abs(fuel*10))%2 == 0:
+					jet_node.get_node("smoke").emitting = true
+					jet_node.get_node("smoke_2").emitting = false
+				else:
+					jet_node.get_node("smoke_2").emitting = true
+					jet_node.get_node("smoke").emitting = false
+			else:
+				jet_node.get_node("smoke").emitting = false
+				jet_node.get_node("smoke_2").emitting = false
+	else:
+		jet_set_anim("idle")
+		jet_node.get_node("smoke").emitting = false
+		jet_node.get_node("smoke_2").emitting = false
 	if fuel < max_fuel:
 		fuel+=delta*10
 ### END

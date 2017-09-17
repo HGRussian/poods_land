@@ -217,7 +217,7 @@ z = -1
 texture = ExtResource( 2 )
 vframes = 4
 hframes = 4
-frame = 7
+frame = 11
 _sections_unfolded = [ "Animation", "Visibility", "Z" ]
 
 [node name="anim" type="AnimationPlayer" parent="."]
@@ -239,7 +239,7 @@ _sections_unfolded = [ "Playback", "playback" ]
 
 position = Vector2( -3.76381, 8.62499 )
 z = -2
-emitting = true
+emitting = false
 amount = 256
 lifetime = 2.0
 one_shot = false
@@ -257,13 +257,13 @@ texture = null
 normal_map = null
 h_frames = 1
 v_frames = 1
-_sections_unfolded = [ "Drawing", "Process Material", "Time", "Transform", "Z" ]
+_sections_unfolded = [ "Drawing", "Process Material", "Time", "Transform", "Visibility", "Z" ]
 
 [node name="smoke_2" type="Particles2D" parent="."]
 
 position = Vector2( 2.83327, 8.76388 )
 z = -2
-emitting = true
+emitting = false
 amount = 256
 lifetime = 2.0
 one_shot = false

@@ -25,6 +25,7 @@ func ch_params( who ):
 ### CHANGING PARAMS HERE
 	tele_range*=1.1
 	cooldown*=0.8
+	$timer.wait_time = cooldown
 ### END
 
 
@@ -63,7 +64,7 @@ func teleport( side ,who): # true - right, false - left
 func _process(delta):
 	var who = get_node("../..")
 ### HANDLING PROCESS
-	who.get_node("../UI").set_counter(["Teleport",int((1-$timer.get_time_left())*10),cooldown*10])
+	who.get_node("../UI").set_counter(["Teleport",int((cooldown-$timer.get_time_left())*100),cooldown*100])
 	$ray.global_rotation = 0
 	$check.global_rotation = 0
 	if who.get_node("tex").flip_h:
