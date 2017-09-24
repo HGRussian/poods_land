@@ -5,8 +5,7 @@ var len = 16
 var type = ""
 
 var is_art = false
-
-var y_place
+var weapon = false
 
 func gen():
 	for i in nodes+1:
@@ -60,16 +59,30 @@ func _ready():
 		len = 12
 		nodes = 2
 	gen()
-	y_place = 0
-	for i in range(0,32):
-			if get_node("pivot/tile_map").get_cell(len/2,-i) == -1:
-				y_place = -i*32+32
-				break
+	if randi()%25 == 0:
+		weapon = true
 	if type == "artroom":
 		var a = preload("res://resources/scenes/props/artefact.tscn")
 		a = a.instance()
 		a.position.x = len/2*32+16
-		a.position.y = y_place
+		a.position.y = y_place(len/2)
 		$pivot.add_child(a)
+	if weapon: place_weapon()
+
+func y_place(x):
+	var y_place
+	for i in range(0,32):
+		if get_node("pivot/tile_map").get_cell(x,-i) == -1:
+			y_place = -i*32+32
+			break
+	return y_place
+
+func place_weapon():
+	var w = preload("res://resources/scenes/props/weapon_prop.tscn")
+	w = w.instance()
+	var x_pos = randi()%len
+	w.position.x = x_pos*32+16
+	w.position.y = y_place(x_pos)-16
+	$pivot.add_child(w)
 	
 	

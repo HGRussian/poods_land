@@ -52,6 +52,7 @@ func _process(delta):
 			fuel-=delta*50
 		else:
 			if fuel < 1:
+				jet_set_anim("fire")
 				if int(abs(fuel*10))%2 == 0:
 					jet_node.get_node("smoke").emitting = true
 					jet_node.get_node("smoke_2").emitting = false
@@ -59,6 +60,7 @@ func _process(delta):
 					jet_node.get_node("smoke_2").emitting = true
 					jet_node.get_node("smoke").emitting = false
 			else:
+				jet_set_anim("idle")
 				jet_node.get_node("smoke").emitting = false
 				jet_node.get_node("smoke_2").emitting = false
 	else:

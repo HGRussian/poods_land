@@ -24,7 +24,6 @@ extents = Vector2( 69.576, 10 )
 "pl",
 ] instance=ExtResource( 1 )]
 
-editor/display_folded = true
 position = Vector2( -44, -365 )
 
 [node name="detectors" parent="poods"]
@@ -85,37 +84,31 @@ _sections_unfolded = [ "Cell", "Collision", "Occluder", "Transform" ]
 [node name="artefact" parent="." instance=ExtResource( 4 )]
 
 position = Vector2( 178, 65 )
-force_rarity = "rare"
-force_item = "jetpack"
+force_item = "random"
 
 [node name="artefact2" parent="." instance=ExtResource( 4 )]
 
 position = Vector2( 226, 65 )
-force_rarity = "basic"
 force_item = "random"
 
 [node name="artefact3" parent="." instance=ExtResource( 4 )]
 
 position = Vector2( 274, 65 )
-force_rarity = "normal"
 force_item = "random"
 
 [node name="artefact4" parent="." instance=ExtResource( 4 )]
 
 position = Vector2( 322, 65 )
-force_rarity = "rare"
 force_item = "random"
 
 [node name="artefact5" parent="." instance=ExtResource( 4 )]
 
 position = Vector2( 370, 65 )
-force_rarity = "ultra"
 force_item = "random"
 
 [node name="artefact6" parent="." instance=ExtResource( 4 )]
 
 position = Vector2( 418, 65 )
-force_rarity = "legendary"
 force_item = "random"
 
 [node name="artefact7" parent="." instance=ExtResource( 4 )]
