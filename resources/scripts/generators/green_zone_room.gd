@@ -1,7 +1,7 @@
 extends Node2D
 
-var nodes = 4
-var len = 16
+var nodes = 2
+var len = 4
 var type = ""
 
 var is_art = false
@@ -19,13 +19,13 @@ func gen():
 		for j in radius*1.5:
 			circle(x,j,clamp(7-j,2,999))
 	var t = get_node("pivot/tile_map")
-	for i in len+8:
+	for i in len+16:
 		for j in len:
 			var x = i-4
 			var y = j-len/2
 			if t.get_cell(x,y) > -1:
 				if t.get_cell(x,y-1) == -1:
-					t.set_cell(x,y,11)
+					t.set_cell(x,y,1)
 	
 	
 

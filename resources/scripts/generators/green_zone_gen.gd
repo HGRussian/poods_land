@@ -6,7 +6,7 @@ const BOX_H = 9
 var nodes = 7
 var second_nodes = 8
 var third_nodes = 8
-var distance = 24
+var distance = 32
 var distance_rand = 8
 var boxes
 var meta 

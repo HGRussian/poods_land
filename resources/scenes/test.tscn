@@ -66,7 +66,7 @@ _sections_unfolded = [ "Smoothing" ]
 
 mode = 0
 tile_set = ExtResource( 3 )
-cell_size = Vector2( 32, 32 )
+cell_size = Vector2( 64, 64 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 cell_half_offset = 2
@@ -78,42 +78,42 @@ collision_bounce = 0.0
 collision_layer = 1
 collision_mask = 16385
 occluder_light_mask = 1
-tile_data = PoolIntArray( -131070, 45, -131069, 42, -65534, 17, -65533, 18, 2, 17, 3, 14, 65538, 17, 65539, 14, 196601, 45, 196602, 10, 196603, 10, 196604, 10, 196605, 10, 196606, 10, 196607, 10, 131072, 27, 131073, 10, 131074, 29, 131075, 26, 131076, 10, 131077, 10, 131078, 10, 131079, 10, 131080, 10, 131081, 10, 131082, 10, 131083, 10, 131084, 10, 131085, 10, 131086, 10, 131087, 10, 131088, 42, 262137, 49, 262138, 5, 262139, 5, 262140, 5, 262141, 5, 262142, 5, 262143, 5, 196608, 5, 196609, 5, 196610, 5, 196611, 5, 196612, 5, 196613, 5, 196614, 5, 196615, 5, 196616, 5, 196617, 5, 196618, 5, 196619, 5, 196620, 5, 196621, 5, 196622, 5, 196623, 5, 196624, 38 )
+tile_data = PoolIntArray( -131070, 45, -131069, 42, -65536, 18, -65535, 17, 0, 8, 1, 3, 131068, 1, 131069, 1, 131070, 1, 131071, 1, 65536, 10, 65537, 9, 65538, 1, 65539, 1, 65540, 1, 65541, 1, 65542, 1, 65543, 1, 65544, 1, 262138, 5, 262140, 5, 262141, 5, 262142, 5, 262143, 5, 196608, 5, 196609, 5, 196610, 5, 196611, 5, 196612, 5, 196613, 5, 196614, 5, 196615, 5, 196617, 5, 196618, 5, 196619, 5, 196620, 5, 196621, 5, 196622, 5, 196623, 5, 196624, 38 )
 _sections_unfolded = [ "Cell", "Collision", "Occluder", "Transform" ]
 
 [node name="artefact" parent="." instance=ExtResource( 4 )]
 
-position = Vector2( 178, 65 )
+position = Vector2( 181, 96 )
 force_item = "random"
 
 [node name="artefact2" parent="." instance=ExtResource( 4 )]
 
-position = Vector2( 226, 65 )
+position = Vector2( 229, 96 )
 force_item = "random"
 
 [node name="artefact3" parent="." instance=ExtResource( 4 )]
 
-position = Vector2( 274, 65 )
+position = Vector2( 277, 96 )
 force_item = "random"
 
 [node name="artefact4" parent="." instance=ExtResource( 4 )]
 
-position = Vector2( 322, 65 )
+position = Vector2( 325, 96 )
 force_item = "random"
 
 [node name="artefact5" parent="." instance=ExtResource( 4 )]
 
-position = Vector2( 370, 65 )
+position = Vector2( 373, 96 )
 force_item = "random"
 
 [node name="artefact6" parent="." instance=ExtResource( 4 )]
 
-position = Vector2( 418, 65 )
+position = Vector2( 421, 96 )
 force_item = "random"
 
 [node name="artefact7" parent="." instance=ExtResource( 4 )]
 
-position = Vector2( 466, 65 )
+position = Vector2( 469, 96 )
 force_item = "random"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -147,15 +147,15 @@ shape = SubResource( 2 )
 
 [node name="weapon_prop" parent="." instance=ExtResource( 5 )]
 
-position = Vector2( -147, 54 )
+position = Vector2( -147, 86 )
 
 [node name="weapon_prop2" parent="." instance=ExtResource( 5 )]
 
-position = Vector2( -105, 54 )
+position = Vector2( -105, 86 )
 
 [node name="weapon_prop3" parent="." instance=ExtResource( 5 )]
 
-position = Vector2( -63, 54 )
+position = Vector2( -63, 86 )
 gun_name = "big_magnum"
 
 [node name="debug" parent="." instance=ExtResource( 6 )]
