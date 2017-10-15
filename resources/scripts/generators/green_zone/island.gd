@@ -5,7 +5,6 @@ onready var tile_map = get_node("tile_map")
 var w = 4
 
 func _ready():
-	randomize()
 	gen()
 
 func gen():

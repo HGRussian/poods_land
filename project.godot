@@ -1,7 +1,5 @@
 config_version=3
 
-config_version=null
-
 [application]
 
 config/name="poods_land"
@@ -44,6 +42,11 @@ shoot=[ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"",
 
 name_num_separator=2
 name_casing=2
+
+[physics]
+
+2d/thread_model=2
+2d/cell_size=16
 
 [rendering]
 
