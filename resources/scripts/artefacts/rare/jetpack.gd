@@ -39,7 +39,7 @@ func _process(delta):
 	if jet_node.get_node("anim").get_current_animation() == "init" and jet_node.get_node("anim").is_playing():
 		return
 	
-	if who.onair_time > 0.2*who.JUMPS and who.cjumps == who.JUMPS:
+	if who.onair_time > 0.3 and who.cjumps == who.JUMPS:
 		if Input.is_action_just_pressed("move_jump"):
 			jet_set_anim("start")
 			jet_node.get_node("smoke").emitting = true
@@ -49,6 +49,7 @@ func _process(delta):
 			if jet_node.get_node("anim").get_current_animation() == "start" and !jet_node.get_node("anim").is_playing():
 				jet_set_anim("fire")
 			who.linear_velocity.y = lerp(who.linear_velocity.y,-300,5*delta)
+			who.onair_time = 0.4
 			fuel-=delta*50
 		else:
 			if fuel < 1:

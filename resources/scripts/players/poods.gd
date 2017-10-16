@@ -160,7 +160,7 @@ func _fixed_process(delta):
 		if move_jump:
 			if cjumps < JUMPS:
 				linear_velocity=Vector2(0,-jump_speed).rotated(rot_target)
-				onair_time = 0.1
+				onair_time = 0.3
 				cjumps+=1
 		# target normal
 	# put cooked x lin_vec!
