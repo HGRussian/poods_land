@@ -12,9 +12,9 @@ var SPRINT_SPEED = 550
 var JUMP = 400
 var SPRINT_JUMP = 450
 var WALL_JUMP_FACTOR = 10
-var ACC_FACTOR = 15
+var ACC_FACTOR = 10
 var SLIDE_FACTOR = 10
-var JUMPS = 1
+var JUMPS = 2
 var STICKINESS = 0.3 # seconds
 
 # some useful vars
@@ -160,10 +160,11 @@ func _fixed_process(delta):
 		if move_jump:
 			if cjumps < JUMPS:
 				linear_velocity=Vector2(0,-jump_speed).rotated(rot_target)
+				onair_time = 0.1
 				cjumps+=1
 		# target normal
 	# put cooked x lin_vec!
-	linear_velocity.x=lerp(linear_velocity.x,lin_vec.x,delta*ACC_FACTOR)
+	linear_velocity.x=lerp(linear_velocity.x,lin_vec.x,delta*ACC_FACTOR)*clamp(1-onair_time/8,0.1,1)
 	# rotate poods
 	rot = lerp(rot,rot_target,delta*25)
 	rotation = rot

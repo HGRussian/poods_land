@@ -46,7 +46,7 @@ name_casing=2
 [physics]
 
 2d/thread_model=2
-2d/cell_size=16
+2d/cell_size=32
 
 [rendering]
 

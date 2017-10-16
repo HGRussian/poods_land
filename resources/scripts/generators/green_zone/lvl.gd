@@ -4,7 +4,7 @@ var w = 8
 var h = 8
 
 var noise = 10
-var count = 24
+var count = 20
 
 var island_scn = preload("res://resources/scenes/generators/green_zone/island.tscn")
 
@@ -15,10 +15,10 @@ func _ready():
 func place(array):
 	for i in array:
 		var s = island_scn.instance()
-		s.w = randi()%6+2
-		s.position = i*384
+		s.w = randi()%8+2
+		s.position = i*Vector2(384,280)
 		add_child(s)
-	$poods.position = Vector2(w/2,h/2)*384-Vector2(0,256)
+	$poods.position = Vector2(w/2,h/2)*Vector2(384,280)-Vector2(0,128)
 
 func gen():
 	var islands = []

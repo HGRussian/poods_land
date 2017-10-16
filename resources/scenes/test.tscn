@@ -24,7 +24,6 @@ extents = Vector2( 69.576, 10 )
 "pl",
 ] instance=ExtResource( 1 )]
 
-editor/display_folded = true
 position = Vector2( -44, -365 )
 
 [node name="detectors" parent="poods"]
