@@ -7,18 +7,17 @@ const SPEED_RUN_VEL = 384
 const JUMP_VEL = Vector2(0, -48)
 
 var linear_velocity = Vector2.ZERO
-var linear_velocity_old = Vector2.ZERO
 
 var wall_slide_delay = 0.0
 var is_sliding = false
 
 var bullet_scene = preload('res://Assets/Scenes/Bullet.tscn')
+var shoot_cooldown = 0
 
 func _ready() -> void:
 	pass # Replace with function body.
 
 func _physics_process(delta: float) -> void:
-	linear_velocity_old = linear_velocity
 	
 	# Apply gravity
 	if not is_on_floor():
@@ -116,9 +115,14 @@ func _physics_process(delta: float) -> void:
 				$sprites.scale.x = 1
 			elif linear_velocity.x < 0:
 				$sprites.scale.x = -1
-	
-	if Input.is_action_just_pressed('shoot'):
+
+func _process(delta):
+	if Input.is_action_pressed('shoot') and shoot_cooldown > 0.1:
+		shoot_cooldown = 0
 		var b = bullet_scene.instance()
 		b.position = global_position
-		b.dir = Vector2($sprites.scale.x, 0)
+		b.dir = Vector2($sprites.scale.x, (randf()-0.5)/5.0)
 		get_parent().add_child(b)
+		linear_velocity.x -= b.dir.x * 16
+	
+	shoot_cooldown += delta
