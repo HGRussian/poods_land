@@ -1,10 +1,20 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Assets/Scenes/PlayerController.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Sprites/Debug/debug_grid_wall.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Scripts/Glass.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 168 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 4, 24 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 4, 24 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 4, 24 )
 
 [node name="World" type="Node"]
 
@@ -27,161 +37,234 @@ texture = ExtResource( 2 )
 polygon = PoolVector2Array( -16, -168, 16, -168, 16, 168, -16, 168 )
 uv = PoolVector2Array( -16, -160, 16, -160, 16, 176, -16, 176 )
 
-[node name="CollisionShape2D15" type="CollisionShape2D" parent="map/Objects/StaticBody2D"]
-position = Vector2( 688, 40 )
+[node name="StaticBody2D2" type="StaticBody2D" parent="map/Objects"]
+
+[node name="CollisionShape2D15" type="CollisionShape2D" parent="map/Objects/StaticBody2D2"]
+position = Vector2( 696, 88 )
 shape = SubResource( 1 )
 
-[node name="Polygon2D" type="Polygon2D" parent="map/Objects/StaticBody2D/CollisionShape2D15"]
+[node name="Polygon2D" type="Polygon2D" parent="map/Objects/StaticBody2D2/CollisionShape2D15"]
 texture = ExtResource( 2 )
 polygon = PoolVector2Array( -16, -168, 16, -168, 16, 168, -16, 168 )
 uv = PoolVector2Array( -16, -160, 16, -160, 16, 176, -16, 176 )
 
-[node name="CollisionShape2D16" type="CollisionShape2D" parent="map/Objects/StaticBody2D"]
-position = Vector2( 992, 392 )
-shape = SubResource( 1 )
+[node name="StaticBody2D3" type="StaticBody2D" parent="map/Objects"]
 
-[node name="Polygon2D" type="Polygon2D" parent="map/Objects/StaticBody2D/CollisionShape2D16"]
-texture = ExtResource( 2 )
-polygon = PoolVector2Array( -16, -168, 16, -168, 16, 168, -16, 168 )
-uv = PoolVector2Array( -16, -160, 16, -160, 16, 176, -16, 176 )
-
-[node name="CollisionShape2D17" type="CollisionShape2D" parent="map/Objects/StaticBody2D"]
-position = Vector2( 992, 72 )
-shape = SubResource( 1 )
-
-[node name="Polygon2D" type="Polygon2D" parent="map/Objects/StaticBody2D/CollisionShape2D17"]
-texture = ExtResource( 2 )
-polygon = PoolVector2Array( -16, -168, 16, -168, 16, 168, -16, 168 )
-uv = PoolVector2Array( -16, -160, 16, -160, 16, 176, -16, 176 )
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="map/Objects/StaticBody2D"]
-position = Vector2( 8, 96 )
-shape = SubResource( 1 )
-
-[node name="Polygon2D" type="Polygon2D" parent="map/Objects/StaticBody2D/CollisionShape2D3"]
-texture = ExtResource( 2 )
-polygon = PoolVector2Array( -16, -168, 16, -168, 16, 168, -16, 168 )
-uv = PoolVector2Array( -16, -160, 16, -160, 16, 176, -16, 176 )
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="map/Objects/StaticBody2D"]
-position = Vector2( 144, 256 )
-shape = SubResource( 1 )
-
-[node name="Polygon2D" type="Polygon2D" parent="map/Objects/StaticBody2D/CollisionShape2D2"]
-texture = ExtResource( 2 )
-polygon = PoolVector2Array( -16, -168, 16, -168, 16, 168, -16, 168 )
-uv = PoolVector2Array( -16, -160, 16, -160, 16, 176, -16, 176 )
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="map/Objects/StaticBody2D"]
-position = Vector2( 176, 536 )
+[node name="CollisionShape2D14" type="CollisionShape2D" parent="map/Objects/StaticBody2D3"]
+position = Vector2( 760, 344 )
 rotation = 1.57079
 shape = SubResource( 1 )
 
-[node name="Polygon2D" type="Polygon2D" parent="map/Objects/StaticBody2D/CollisionShape2D4"]
+[node name="Polygon2D" type="Polygon2D" parent="map/Objects/StaticBody2D3/CollisionShape2D14"]
 texture = ExtResource( 2 )
 polygon = PoolVector2Array( -16, -168, 16, -168, 16, 168, -16, 168 )
 uv = PoolVector2Array( -16, -160, 16, -160, 16, 176, -16, 176 )
 
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="map/Objects/StaticBody2D"]
-position = Vector2( 496, 536 )
+[node name="StaticBody2D4" type="StaticBody2D" parent="map/Objects"]
+
+[node name="CollisionShape2D13" type="CollisionShape2D" parent="map/Objects/StaticBody2D4"]
+position = Vector2( 680, 264 )
 rotation = 1.57079
 shape = SubResource( 1 )
 
-[node name="Polygon2D" type="Polygon2D" parent="map/Objects/StaticBody2D/CollisionShape2D5"]
+[node name="Polygon2D" type="Polygon2D" parent="map/Objects/StaticBody2D4/CollisionShape2D13"]
 texture = ExtResource( 2 )
 polygon = PoolVector2Array( -16, -168, 16, -168, 16, 168, -16, 168 )
 uv = PoolVector2Array( -16, -160, 16, -160, 16, 176, -16, 176 )
 
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="map/Objects/StaticBody2D"]
-position = Vector2( 816, 536 )
+[node name="StaticBody2D5" type="StaticBody2D" parent="map/Objects"]
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="map/Objects/StaticBody2D5"]
+position = Vector2( 336, 152 )
 rotation = 1.57079
 shape = SubResource( 1 )
 
-[node name="Polygon2D" type="Polygon2D" parent="map/Objects/StaticBody2D/CollisionShape2D6"]
+[node name="Polygon2D" type="Polygon2D" parent="map/Objects/StaticBody2D5/CollisionShape2D12"]
 texture = ExtResource( 2 )
 polygon = PoolVector2Array( -16, -168, 16, -168, 16, 168, -16, 168 )
 uv = PoolVector2Array( -16, -160, 16, -160, 16, 176, -16, 176 )
 
-[node name="CollisionShape2D7" type="CollisionShape2D" parent="map/Objects/StaticBody2D"]
-position = Vector2( 448, 472 )
+[node name="StaticBody2D6" type="StaticBody2D" parent="map/Objects"]
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="map/Objects/StaticBody2D6"]
+position = Vector2( 456, 520 )
 rotation = 1.57079
 shape = SubResource( 1 )
 
-[node name="Polygon2D" type="Polygon2D" parent="map/Objects/StaticBody2D/CollisionShape2D7"]
+[node name="Polygon2D" type="Polygon2D" parent="map/Objects/StaticBody2D6/CollisionShape2D7"]
 texture = ExtResource( 2 )
 polygon = PoolVector2Array( -16, -168, 16, -168, 16, 168, -16, 168 )
 uv = PoolVector2Array( -16, -160, 16, -160, 16, 176, -16, 176 )
 
-[node name="CollisionShape2D8" type="CollisionShape2D" parent="map/Objects/StaticBody2D"]
-position = Vector2( 784, 440 )
+[node name="StaticBody2D7" type="StaticBody2D" parent="map/Objects"]
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="map/Objects/StaticBody2D7"]
+position = Vector2( 824, 584 )
 rotation = 1.57079
 shape = SubResource( 1 )
 
-[node name="Polygon2D" type="Polygon2D" parent="map/Objects/StaticBody2D/CollisionShape2D8"]
+[node name="Polygon2D" type="Polygon2D" parent="map/Objects/StaticBody2D7/CollisionShape2D6"]
 texture = ExtResource( 2 )
 polygon = PoolVector2Array( -16, -168, 16, -168, 16, 168, -16, 168 )
 uv = PoolVector2Array( -16, -160, 16, -160, 16, 176, -16, 176 )
 
-[node name="CollisionShape2D9" type="CollisionShape2D" parent="map/Objects/StaticBody2D"]
-position = Vector2( 312, 376 )
+[node name="StaticBody2D8" type="StaticBody2D" parent="map/Objects"]
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="map/Objects/StaticBody2D8"]
+position = Vector2( 504, 584 )
 rotation = 1.57079
 shape = SubResource( 1 )
 
-[node name="Polygon2D" type="Polygon2D" parent="map/Objects/StaticBody2D/CollisionShape2D9"]
+[node name="Polygon2D" type="Polygon2D" parent="map/Objects/StaticBody2D8/CollisionShape2D5"]
 texture = ExtResource( 2 )
 polygon = PoolVector2Array( -16, -168, 16, -168, 16, 168, -16, 168 )
 uv = PoolVector2Array( -16, -160, 16, -160, 16, 176, -16, 176 )
 
-[node name="CollisionShape2D10" type="CollisionShape2D" parent="map/Objects/StaticBody2D"]
-position = Vector2( 848, 376 )
+[node name="StaticBody2D9" type="StaticBody2D" parent="map/Objects"]
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="map/Objects/StaticBody2D9"]
+position = Vector2( 184, 584 )
+rotation = 1.57079
+shape = SubResource( 1 )
+
+[node name="Polygon2D" type="Polygon2D" parent="map/Objects/StaticBody2D9/CollisionShape2D4"]
+texture = ExtResource( 2 )
+polygon = PoolVector2Array( -16, -168, 16, -168, 16, 168, -16, 168 )
+uv = PoolVector2Array( -16, -160, 16, -160, 16, 176, -16, 176 )
+
+[node name="StaticBody2D10" type="StaticBody2D" parent="map/Objects"]
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="map/Objects/StaticBody2D10"]
+position = Vector2( 856, 424 )
 rotation = 1.57079
 z_index = -2
 shape = SubResource( 1 )
 
-[node name="Polygon2D" type="Polygon2D" parent="map/Objects/StaticBody2D/CollisionShape2D10"]
+[node name="Polygon2D" type="Polygon2D" parent="map/Objects/StaticBody2D10/CollisionShape2D10"]
 texture = ExtResource( 2 )
 polygon = PoolVector2Array( -16, -168, 16, -168, 16, 168, -16, 168 )
 uv = PoolVector2Array( -16, -160, 16, -160, 16, 176, -16, 176 )
 
-[node name="CollisionShape2D11" type="CollisionShape2D" parent="map/Objects/StaticBody2D"]
-position = Vector2( 624, 296 )
+[node name="StaticBody2D11" type="StaticBody2D" parent="map/Objects"]
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="map/Objects/StaticBody2D11"]
+position = Vector2( 320, 424 )
 rotation = 1.57079
 shape = SubResource( 1 )
 
-[node name="Polygon2D" type="Polygon2D" parent="map/Objects/StaticBody2D/CollisionShape2D11"]
+[node name="Polygon2D" type="Polygon2D" parent="map/Objects/StaticBody2D11/CollisionShape2D9"]
 texture = ExtResource( 2 )
 polygon = PoolVector2Array( -16, -168, 16, -168, 16, 168, -16, 168 )
 uv = PoolVector2Array( -16, -160, 16, -160, 16, 176, -16, 176 )
 
-[node name="CollisionShape2D12" type="CollisionShape2D" parent="map/Objects/StaticBody2D"]
-position = Vector2( 328, 104 )
+[node name="StaticBody2D12" type="StaticBody2D" parent="map/Objects"]
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="map/Objects/StaticBody2D12"]
+position = Vector2( 792, 488 )
 rotation = 1.57079
 shape = SubResource( 1 )
 
-[node name="Polygon2D" type="Polygon2D" parent="map/Objects/StaticBody2D/CollisionShape2D12"]
+[node name="Polygon2D" type="Polygon2D" parent="map/Objects/StaticBody2D12/CollisionShape2D8"]
 texture = ExtResource( 2 )
 polygon = PoolVector2Array( -16, -168, 16, -168, 16, 168, -16, 168 )
 uv = PoolVector2Array( -16, -160, 16, -160, 16, 176, -16, 176 )
 
-[node name="CollisionShape2D13" type="CollisionShape2D" parent="map/Objects/StaticBody2D"]
-position = Vector2( 672, 216 )
+[node name="StaticBody2D13" type="StaticBody2D" parent="map/Objects"]
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="map/Objects/StaticBody2D13"]
+position = Vector2( 632, 344 )
 rotation = 1.57079
 shape = SubResource( 1 )
 
-[node name="Polygon2D" type="Polygon2D" parent="map/Objects/StaticBody2D/CollisionShape2D13"]
+[node name="Polygon2D" type="Polygon2D" parent="map/Objects/StaticBody2D13/CollisionShape2D11"]
 texture = ExtResource( 2 )
 polygon = PoolVector2Array( -16, -168, 16, -168, 16, 168, -16, 168 )
 uv = PoolVector2Array( -16, -160, 16, -160, 16, 176, -16, 176 )
 
-[node name="CollisionShape2D14" type="CollisionShape2D" parent="map/Objects/StaticBody2D"]
-position = Vector2( 752, 296 )
-rotation = 1.57079
+[node name="StaticBody2D14" type="StaticBody2D" parent="map/Objects"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="map/Objects/StaticBody2D14"]
+position = Vector2( 152, 304 )
 shape = SubResource( 1 )
 
-[node name="Polygon2D" type="Polygon2D" parent="map/Objects/StaticBody2D/CollisionShape2D14"]
+[node name="Polygon2D" type="Polygon2D" parent="map/Objects/StaticBody2D14/CollisionShape2D2"]
 texture = ExtResource( 2 )
 polygon = PoolVector2Array( -16, -168, 16, -168, 16, 168, -16, 168 )
 uv = PoolVector2Array( -16, -160, 16, -160, 16, 176, -16, 176 )
+
+[node name="StaticBody2D15" type="StaticBody2D" parent="map/Objects"]
+
+[node name="CollisionShape2D16" type="CollisionShape2D" parent="map/Objects/StaticBody2D15"]
+position = Vector2( 1000, 440 )
+shape = SubResource( 1 )
+
+[node name="Polygon2D" type="Polygon2D" parent="map/Objects/StaticBody2D15/CollisionShape2D16"]
+texture = ExtResource( 2 )
+polygon = PoolVector2Array( -16, -168, 16, -168, 16, 168, -16, 168 )
+uv = PoolVector2Array( -16, -160, 16, -160, 16, 176, -16, 176 )
+
+[node name="StaticBody2D16" type="StaticBody2D" parent="map/Objects"]
+
+[node name="CollisionShape2D17" type="CollisionShape2D" parent="map/Objects/StaticBody2D16"]
+position = Vector2( 1000, 120 )
+shape = SubResource( 1 )
+
+[node name="Polygon2D" type="Polygon2D" parent="map/Objects/StaticBody2D16/CollisionShape2D17"]
+texture = ExtResource( 2 )
+polygon = PoolVector2Array( -16, -168, 16, -168, 16, 168, -16, 168 )
+uv = PoolVector2Array( -16, -160, 16, -160, 16, 176, -16, 176 )
+
+[node name="StaticBody2D17" type="StaticBody2D" parent="map/Objects"]
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="map/Objects/StaticBody2D17"]
+position = Vector2( 16, 144 )
+shape = SubResource( 1 )
+
+[node name="Polygon2D" type="Polygon2D" parent="map/Objects/StaticBody2D17/CollisionShape2D3"]
+texture = ExtResource( 2 )
+polygon = PoolVector2Array( -16, -168, 16, -168, 16, 168, -16, 168 )
+uv = PoolVector2Array( -16, -160, 16, -160, 16, 176, -16, 176 )
+
+[node name="glass" type="Polygon2D" parent="map/Objects"]
+position = Vector2( 595.428, 304.089 )
+color = Color( 0.447059, 0.988235, 1, 1 )
+polygon = PoolVector2Array( -4.42761, -24.0887, 3.57239, -24.0887, 3.57239, 23.9113, -4.42761, 23.9113 )
+script = ExtResource( 3 )
+
+[node name="static" type="StaticBody2D" parent="map/Objects/glass"]
+collision_layer = 8
+collision_mask = 18
+
+[node name="col" type="CollisionShape2D" parent="map/Objects/glass/static"]
+shape = SubResource( 2 )
+
+[node name="glass2" type="Polygon2D" parent="map/Objects"]
+position = Vector2( 140, 520 )
+scale = Vector2( 1, 2.04 )
+color = Color( 0.447059, 0.988235, 1, 1 )
+polygon = PoolVector2Array( -4.42761, -24.0887, 3.57239, -24.0887, 3.57239, 23.9113, -4.42761, 23.9113 )
+script = ExtResource( 3 )
+
+[node name="static" type="StaticBody2D" parent="map/Objects/glass2"]
+collision_layer = 8
+collision_mask = 18
+
+[node name="col" type="CollisionShape2D" parent="map/Objects/glass2/static"]
+shape = SubResource( 3 )
+
+[node name="glass3" type="Polygon2D" parent="map/Objects"]
+position = Vector2( 164, 520 )
+scale = Vector2( 1, 2.04 )
+color = Color( 0.447059, 0.988235, 1, 1 )
+polygon = PoolVector2Array( -4.42761, -24.0887, 3.57239, -24.0887, 3.57239, 23.9113, -4.42761, 23.9113 )
+script = ExtResource( 3 )
+
+[node name="static" type="StaticBody2D" parent="map/Objects/glass3"]
+collision_layer = 8
+collision_mask = 18
+
+[node name="col" type="CollisionShape2D" parent="map/Objects/glass3/static"]
+shape = SubResource( 4 )
 
 [node name="DebugLines" type="Node2D" parent="map"]
 

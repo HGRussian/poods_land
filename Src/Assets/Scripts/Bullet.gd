@@ -18,16 +18,21 @@ func _process(delta: float) -> void:
 		if ex != null:
 			remove_exception(ex)
 		points.set(1, get_collision_point() - global_position)
-		print(get_collision_normal())
-		if abs(dir.normalized().dot(get_collision_normal())) < 0.5 and get_collision_normal() != Vector2.ZERO: 
-			print(dir)
-			dir = dir.reflect(Vector2.RIGHT)
-			print(dir)
+		
+		if get_collider().get_parent().has_method("damage"):
+			var dam = get_collider().get_parent().damage()
 			add_exception(get_collider())
-			ex = get_collider()
-#			next_step = get_collision_point() - global_position
+			if dam != null:
+				add_exception(dam)
+#			queue_free()
 		else:
-			queue_free()
+			if abs(dir.normalized().dot(get_collision_normal())) < 0.5 and get_collision_normal() != Vector2.ZERO: 
+				dir = dir.reflect(Vector2.RIGHT)
+				add_exception(get_collider())
+				ex = get_collider()
+	#			next_step = get_collision_point() - global_position
+			else:
+				queue_free()
 	else:
 		points.set(1, d)
 		next_step = d
