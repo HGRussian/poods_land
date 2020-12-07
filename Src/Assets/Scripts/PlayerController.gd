@@ -12,6 +12,8 @@ var linear_velocity_old = Vector2.ZERO
 var wall_slide_delay = 0.0
 var is_sliding = false
 
+var bullet_scene = preload('res://Assets/Scenes/Bullet.tscn')
+
 func _ready() -> void:
 	pass # Replace with function body.
 
@@ -114,3 +116,9 @@ func _physics_process(delta: float) -> void:
 				$sprites.scale.x = 1
 			elif linear_velocity.x < 0:
 				$sprites.scale.x = -1
+	
+	if Input.is_action_just_pressed('shoot'):
+		var b = bullet_scene.instance()
+		b.position = global_position
+		b.dir = Vector2($sprites.scale.x, 0)
+		get_parent().add_child(b)
