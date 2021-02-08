@@ -405,10 +405,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 7.19907 ]
+"values": [ 7.19907, 2.51863 ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("sprites/body/eyes:texture")
@@ -429,10 +429,10 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( -5, 6 ) ]
+"values": [ Vector2( -2, 6 ), Vector2( -5, 6 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("sprites/body/leg_l:rotation_degrees")
@@ -441,10 +441,10 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ -18.0951, 45.9501, -18.0951 ]
+"values": [ -18.0951, 45.9501 ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("sprites/body/leg_r:position")
@@ -453,10 +453,10 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 2, 6 ) ]
+"values": [ Vector2( -2, 6 ), Vector2( 2, 6 ) ]
 }
 tracks/6/type = "value"
 tracks/6/path = NodePath("sprites/body/leg_r:rotation_degrees")
@@ -465,10 +465,10 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 28.7376, -28.5707, 28.7376 ]
+"values": [ 28.7376, -28.5707 ]
 }
 tracks/7/type = "value"
 tracks/7/path = NodePath("sprites/body/eyes:flip_h")
@@ -602,8 +602,7 @@ anims/sliding = SubResource( 7 )
 [node name="sprites" type="Node2D" parent="."]
 
 [node name="body" type="Sprite" parent="sprites"]
-position = Vector2( 0, -1 )
-rotation = -0.101549
+position = Vector2( 0, -2 )
 texture = ExtResource( 2 )
 
 [node name="eyes" type="Sprite" parent="sprites/body"]
@@ -611,14 +610,12 @@ texture = ExtResource( 4 )
 
 [node name="leg_l" type="Sprite" parent="sprites/body"]
 show_behind_parent = true
-position = Vector2( -4.68902, 6.55844 )
-rotation = 0.0270405
+position = Vector2( -5, 6 )
 texture = ExtResource( 3 )
 offset = Vector2( 0, 2 )
 
 [node name="leg_r" type="Sprite" parent="sprites/body"]
 show_behind_parent = true
-position = Vector2( 2.37629, 6.27321 )
-rotation = -0.601302
+position = Vector2( 2, 6 )
 texture = ExtResource( 3 )
 offset = Vector2( 0, 2 )
