@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Node2D",
+"class": "CellSystem",
+"language": "GDScript",
+"path": "res://Assets/Scripts/CellSystem.gd"
+} ]
+_global_script_class_icons={
+"CellSystem": ""
+}
+
 [application]
 
 config/name="ProjectPoods"
