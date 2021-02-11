@@ -3,14 +3,14 @@ class_name CellSystem
 
 export var CELL_SIZE = Vector2(16,16)
 export var COLOR_CODES = [
-	Color.black     , # 0
-	Color.red       , # 1
-	Color.blue      , # 2
-	Color.green     , # 3
-	Color.brown     , # 4
-	Color.darkkhaki , # 5
-	Color(0,1.0,0.4), # 6
-	Color("#1032fd"), # 7
+	Color.saddlebrown , # 0
+	Color.springgreen , # 1
+	Color.blue        , # 2
+	Color.green       , # 3
+	Color.brown       , # 4
+	Color.darkkhaki   , # 5
+	Color(0,1.0,0.4)  , # 6
+	Color("#1032fd")  , # 7
 ]
 export var DEBUG = false 
 

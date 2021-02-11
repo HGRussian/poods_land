@@ -1,13 +1,16 @@
 extends CellSystem
 
-var iwidth: int = 64 # the whole baseline (whole vradius)
-var iheigth: int = 128 # the half or hradius
-var balance: float = 0 # thinn | thickk
+var iwidth: int     = 64  # the whole baseline (whole vradius)
+var iheigth: int    = 128 # the half or hradius
+var balance: float  = 0   # thinn | thickk
+var leavesch: float = 2.5 # > 1, more - more leaves
+var leavesln: float = 2   # > 1, more - longer leaves
+var leavesbs: float = 0.5 # 0-1, length in percents, after leaves become decoration
 
 func generate() -> void:
-	halfellipse(iwidth, iheigth)
+	mkisland(iwidth, iheigth, 0, -100)
 
-func halfellipse(
+func mkisland(
 	width: int, heigth: int,
 	originx: int = 0, originy: int = 0
 	) -> void:
@@ -20,6 +23,8 @@ func halfellipse(
 	var x1 = 0
 	var ldisp = 0
 	var rdisp = 0
+	
+	var lcells = []
 
 	for i in range(-width, width):
 		putcell(i + originx, originy, 0)
@@ -41,16 +46,32 @@ func halfellipse(
 			ldisp = move_toward(ldisp, 0, 1)
 		for x in range(-x0 + ldisp, 0):
 			putcell(originx + x, originy + y, 0)
+			lcells.append(Vector2(originx + x, originy + y))
+			if lcells.has(Vector2(originx + x, originy + y - 1)):
+				lcells.erase(Vector2(originx + x, originy + y - 1))
 		for x in range(0, x0 + rdisp):
 			putcell(originx + x, originy + y, 0)
+			lcells.append(Vector2(originx + x, originy + y))
+			if lcells.has(Vector2(originx + x, originy + y - 1)):
+				lcells.erase(Vector2(originx + x, originy + y - 1))
 	
-	putcell(0, originy + heigth, 1)
+	for i in lcells:
+		if randi()%int(clamp((heigth - i.y + originy) / leavesch, 1, INF)) == 0:
+			var ln = randi()%int(heigth - i.y + originy) * leavesln
+			for j in range(ln):
+				if j > leavesbs * ln:
+					putcell(i.x, i.y + j, 1)
+				else:
+					putcell(i.x, i.y + j, 0)
 
 func _ready() -> void:
 	while true:
 		balance = -randi()%2
 		iwidth = randi()%64 + 32
 		iheigth = randi()%80 + 16
+		leavesch = 1 + randf()*10
+		leavesln = 1 + randf()*4
+		leavesbs = randf()
 		cells.clear()
 		randomize()
 		generate()
