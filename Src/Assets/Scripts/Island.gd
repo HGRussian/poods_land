@@ -3,13 +3,29 @@ extends CellSystem
 var iwidth: int     = 64  # the whole baseline (whole vradius)
 var iheigth: int    = 128 # the half or hradius
 var balance: float  = 0   # thinn | thickk
-var leavesch: float = 2.5 # > 1, more - more leaves
-var leavesln: float = 2   # > 1, more - longer leaves
-var leavesbs: float = 0.5 # 0-1, length in percents, after leaves become decoration
+var leavesch: float = 0.5 # 0-1, more - more leaves
+var leavesln: float = 0.5 # > 0, more - longer leaves
+var icount: int     = 1   # > 1, islands count
 
-func generate() -> void:
-	mkisland(iwidth, iheigth, 0, -100)
-
+func generate(gox: int, goy: int) -> void:
+	for i in icount:
+		var d = 0
+		if i - icount / 2 != 0:
+			d = 0.75 / float(abs(i - icount / 2)) * (1 - randf() * 0.25)
+		var liw = iwidth - d * iwidth
+		var lih = iheigth - d * iheigth
+		mkisland(liw, lih, gox + (i - icount / 2) * liw / (randi()%2 + 2), goy)
+	
+	var lcells = cells.keys().duplicate()
+	for i in cells.keys().duplicate():
+		if lcells.has(i - Vector2(0, 1)):
+			lcells.erase(i - Vector2(0, 1))
+	
+	for i in lcells:
+		if randf() < leavesch:
+			for j in range(randi()%int(iheigth) * leavesln):
+				putcell(i.x, i.y + j, 1)
+	
 func mkisland(
 	width: int, heigth: int,
 	originx: int = 0, originy: int = 0
@@ -46,34 +62,23 @@ func mkisland(
 			ldisp = move_toward(ldisp, 0, 1)
 		for x in range(-x0 + ldisp, 0):
 			putcell(originx + x, originy + y, 0)
-			lcells.append(Vector2(originx + x, originy + y))
-			if lcells.has(Vector2(originx + x, originy + y - 1)):
-				lcells.erase(Vector2(originx + x, originy + y - 1))
 		for x in range(0, x0 + rdisp):
 			putcell(originx + x, originy + y, 0)
-			lcells.append(Vector2(originx + x, originy + y))
-			if lcells.has(Vector2(originx + x, originy + y - 1)):
-				lcells.erase(Vector2(originx + x, originy + y - 1))
 	
-	for i in lcells:
-		if randi()%int(clamp((heigth - i.y + originy) / leavesch, 1, INF)) == 0:
-			var ln = randi()%int(heigth - i.y + originy) * leavesln
-			for j in range(ln):
-				if j > leavesbs * ln:
-					putcell(i.x, i.y + j, 1)
-				else:
-					putcell(i.x, i.y + j, 0)
+	return
 
 func _ready() -> void:
 	while true:
+		randomize()
 		balance = -randi()%2
 		iwidth = randi()%64 + 32
 		iheigth = randi()%80 + 16
-		leavesch = 1 + randf()*10
-		leavesln = 1 + randf()*4
-		leavesbs = randf()
+		leavesch = randf()
+		leavesln = randf()*4
+		icount = 1
+		if randi()%2 == 0:
+			icount = randi()%4 + 2
 		cells.clear()
-		randomize()
-		generate()
+		generate(0, -100)
 		update()
-		yield(get_tree().create_timer(0.5), "timeout")
+		yield(get_tree().create_timer(0.2), "timeout")
