@@ -5,7 +5,7 @@ export var CELL_SIZE = Vector2(16,16)
 export var COLOR_CODES = [
 	Color.saddlebrown , # 0
 	Color.springgreen , # 1
-	Color.blue        , # 2
+	Color.black       , # 2
 	Color.green       , # 3
 	Color.brown       , # 4
 	Color.darkkhaki   , # 5
